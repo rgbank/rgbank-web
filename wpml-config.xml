@@ -1,0 +1,36 @@
+<wpml-config>   
+    <admin-texts>
+        <key name="guardian_options">
+            <key name="slide_title" /> 
+			<key name="slide_desc" />
+            <key name="slide_btn_text" />
+			<key name="slide_title_1" />
+			<key name="slide_desc_1" />
+			<key name="slide_btn_text_1" />
+			<key name="slide_title_2" />           
+			<key name="slide_desc_2" />
+			<key name="slide_btn_text_2" />
+			<key name="home_service_title" />
+			<key name="home_service_description" />
+            <key name="service_1_title" />
+			<key name="service_1_text" />
+			<key name="service_2_title" />
+			<key name="service_2_text" />
+			<key name="service_3_title" />           
+			<key name="service_3_text" />
+			<key name="service_4_title" />
+			<key name="service_4_text" />
+			<key name="contact_email" />
+            <key name="contact_phone_no" />
+			<key name="footer_customizations" />
+			<key name="developed_by_text" />
+			<key name="developed_by_weblizar_text" />
+			<key name="terms_of_use_text" />           
+			<key name="Privacy_policy_text" />
+        </key>
+        
+    </admin-texts>    
+    
+</wpml-config>
+
+

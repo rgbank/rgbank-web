@@ -1,0 +1,87 @@
+Change Log:
+Version 2.5[19/10/2015]
+1. Theme-Options removed.
+2. Mobile Menus FIXED.
+
+Version 2.4[20/07/2015]
+1. HOME-Static Page Issue Fixed.
+2. Customizer Setting Added.
+3. Theme-Info Page Added.
+
+Version 2.3[11/06/2015]
+
+1. WPML READY.
+
+Version 2.2[10/06/2015]
+1. READING-Setting BUG FIXED.
+
+Version 2.1[10/04/2015]
+1.WHITE SPACE BUG FIXED
+
+Version 2.0
+1. Minor Changes.
+
+Version 1.9.6
+1.Search-Form Issue Fixed
+
+Version 1.9.5
+1. Issue removed from the Ticket -> https://themes.trac.wordpress.org/ticket/23434
+
+Version 1.9.4
+1. Issue removed from the Ticket -> https://themes.trac.wordpress.org/ticket/23434 
+
+
+Version 1.9.1[10/03/2015]
+1. Translation Related issue.
+2. esc_* functions used.
+3. Prefixd Used. 
+
+Version 1.9[25/02/2015]
+1. Front-Page Static.
+
+Version 1.8.3 [ 23-Jan-2015 ]
+1. Removed Minified CSS/JS
+2. Custom Front-Page Option
+3. wp-title support 
+
+
+Version 1.8.2 [ 6-Jan-2015 ]
+1. Editor in Serivice Option.
+
+Version 1.8.1[ 09-Dec-2014]
+1. Rollback-Snow Effect.
+
+Version 1.8 [ 09-Dec-2014]
+1. Services Link on HOME.
+2. Snow Effect in Op.
+3. String Translation.
+
+Version 1.7 [ 28-Nov-2014]
+1. UPSELL BANNER Removed.
+
+Version 1.6 [ 27-Nov-2014]
+1. THEM UPSELL BANNER SIZE DECREASED.
+2.  MINOR CHANGES ON HEADER PART.
+
+Version 1.5 [ 19-Nov-2014]
+1.Some Issue from Tickets.
+2.Date format.
+
+Version 1.4 [ 18-Nov-2014]
+1. Sane Defaults.
+2. Hard-coded DATE removed.
+3. Resources bundled with in the package.
+4. WooCommerce Ready.
+Version 1.3 [ 28-Sept-2014]
+	-> Issue Raised in Ticket #20445 resolved
+
+Version 1.2 [ 13-Sept-2014]
+	Changes :-> Previous Ticket issue resolved.
+
+Version 1.1 [ 11-Sept-2014]
+   Changes : -> Full-Width Added.
+             -> Widget Managed.
+             -> POT files correction / updates
+Version 1.0 [ 13-Aug-2014 ] Release on WPORG.
+	
+			 

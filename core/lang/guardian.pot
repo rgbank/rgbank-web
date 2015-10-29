@@ -1,0 +1,1473 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Guardian\n"
+"POT-Creation-Date: 2015-03-21 12:05+0530\n"
+"PO-Revision-Date: 2015-03-21 12:05+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-Basepath: ./\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./.\n"
+"X-Poedit-SearchPath-2: ..\n"
+"X-Poedit-SearchPath-3: ../..\n"
+
+#: ../../404.php:7
+msgid "404"
+msgstr ""
+
+#: ../../404.php:9
+msgid "Oops... Page Not Found!"
+msgstr ""
+
+#: ../../404.php:11
+msgid "Sorry the Page Could not be Found here."
+msgstr ""
+
+#: ../../404.php:13
+msgid "Try using the button below to go to main page of the site"
+msgstr ""
+
+#: ../../404.php:17
+msgid "Go to Back"
+msgstr ""
+
+#: ../../archive.php:7
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: ../../archive.php:9
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: ../../archive.php:11
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: ../../archive.php:13
+msgid "Archives"
+msgstr ""
+
+#: ../../author.php:6
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: ../../category.php:6
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: ../../comments.php:2
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../../comments.php:5 ../../loop.php:17 ../../post-content.php:20
+msgid "Comments"
+msgstr ""
+
+#: ../../comments.php:12
+msgid "Comment navigation"
+msgstr ""
+
+#: ../../comments.php:13
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../../comments.php:14
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../../comments.php:21
+msgid "Name*"
+msgstr ""
+
+#: ../../comments.php:22
+msgid "Mail*"
+msgstr ""
+
+#: ../../comments.php:23
+msgid "Website"
+msgstr ""
+
+#: ../../comments.php:33
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../../comments.php:35
+msgid "Post Comment"
+msgstr ""
+
+#: ../../comments.php:38
+msgid "Leave a Comment"
+msgstr ""
+
+#: ../../core/comment-function.php:12 ../comment-function.php:12
+msgid "Reply"
+msgstr ""
+
+#: ../../core/comment-function.php:30 ../comment-function.php:30
+msgid "close"
+msgstr ""
+
+#: ../../core/comment-function.php:31 ../comment-function.php:31
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../../core/customs/flickr-widget.php:8 ../customs/flickr-widget.php:8
+msgid "Displays your latest Flickr photos."
+msgstr ""
+
+#: ../../core/customs/flickr-widget.php:61 ../customs/flickr-widget.php:61
+msgid "Title"
+msgstr ""
+
+#: ../../core/customs/flickr-widget.php:67 ../customs/flickr-widget.php:67
+msgid ""
+"Flickr ID (use <a target=\"_blank\" href=\"http://www.idgettr.com\">idGettr</"
+"a>):"
+msgstr ""
+
+#: ../../core/customs/flickr-widget.php:73 ../customs/flickr-widget.php:73
+msgid "Number of images to display:"
+msgstr ""
+
+#: ../../core/menu/default_menu_walker.php:23 ../../footer.php:23
+#: ../../functions.php:320 ../menu/default_menu_walker.php:23
+msgid "Home"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:43
+#: ../theme-options/option-panel.php:43
+msgid "View Guardian Pro Demo"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:44
+#: ../theme-options/option-panel.php:44
+msgid "Upgrade to Guardian Pro"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:47
+#: ../theme-options/option-panel.php:47
+msgid "Features"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:49
+#: ../theme-options/option-panel.php:49
+msgid "Responsive Design"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:50
+#: ../theme-options/option-panel.php:50
+msgid "More than 15+ Templates"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:51
+#: ../theme-options/option-panel.php:51
+msgid "12 types Themes Colors Scheme"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:52
+#: ../theme-options/option-panel.php:52
+msgid "Patterns Background"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:53
+#: ../theme-options/option-panel.php:53
+msgid "Full Width & Boxed Layout"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:59
+#: ../../core/theme-options/option-settings.php:668 ../../functions.php:40
+#: ../../guardian-default-settings.php:39 ../theme-options/option-panel.php:59
+#: ../theme-options/option-settings.php:668
+msgid "Touch Slider"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:60
+#: ../theme-options/option-panel.php:60
+msgid "Ultimate Portfolio layout with Isotope effect"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:61
+#: ../theme-options/option-panel.php:61
+msgid "Rich Short codes"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:62
+#: ../theme-options/option-panel.php:62
+msgid "Translation Ready"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:63
+#: ../theme-options/option-panel.php:63
+msgid "Coming Soon Mode"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:64
+#: ../theme-options/option-panel.php:64
+msgid "Google Fonts"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:72
+#: ../theme-options/option-panel.php:72
+msgid "Guardian Theme Settings"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:75
+#: ../theme-options/option-panel.php:75
+msgid "Support Forum"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:76
+#: ../theme-options/option-panel.php:76
+msgid "View Changelog"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:84
+#: ../theme-options/option-panel.php:84
+msgid "Home Option"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:86
+#: ../theme-options/option-panel.php:86
+msgid "General Option"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:87
+#: ../theme-options/option-panel.php:87
+msgid "Slide show Option"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:88
+#: ../theme-options/option-panel.php:88
+msgid "Service Option"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:91
+#: ../theme-options/option-panel.php:91
+msgid "Social Media"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:92
+#: ../theme-options/option-panel.php:92
+msgid "Footer Option"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:93
+#: ../theme-options/option-panel.php:93
+msgid "Get Premium"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:107
+#: ../theme-options/option-panel.php:107
+msgid "Click OK to reset theme data. Theme settings will be lost!"
+msgstr ""
+
+#: ../../core/theme-options/option-panel.php:107
+#: ../theme-options/option-panel.php:107
+msgid "Restore All Defaults"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:9
+#: ../theme-options/option-settings.php:9
+msgid "General Settings"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:12
+#: ../../core/theme-options/option-settings.php:165
+#: ../../core/theme-options/option-settings.php:343
+#: ../../core/theme-options/option-settings.php:528
+#: ../../core/theme-options/option-settings.php:609
+#: ../theme-options/option-settings.php:12
+#: ../theme-options/option-settings.php:165
+#: ../theme-options/option-settings.php:343
+#: ../theme-options/option-settings.php:528
+#: ../theme-options/option-settings.php:609
+msgid "Options Data updated"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:13
+#: ../../core/theme-options/option-settings.php:166
+#: ../../core/theme-options/option-settings.php:344
+#: ../../core/theme-options/option-settings.php:529
+#: ../../core/theme-options/option-settings.php:610
+#: ../theme-options/option-settings.php:13
+#: ../theme-options/option-settings.php:166
+#: ../theme-options/option-settings.php:344
+#: ../theme-options/option-settings.php:529
+#: ../theme-options/option-settings.php:610
+msgid "Options data Reset"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:16
+#: ../../core/theme-options/option-settings.php:152
+#: ../../core/theme-options/option-settings.php:169
+#: ../../core/theme-options/option-settings.php:329
+#: ../../core/theme-options/option-settings.php:347
+#: ../../core/theme-options/option-settings.php:514
+#: ../../core/theme-options/option-settings.php:532
+#: ../../core/theme-options/option-settings.php:594
+#: ../../core/theme-options/option-settings.php:613
+#: ../../core/theme-options/option-settings.php:641
+#: ../theme-options/option-settings.php:16
+#: ../theme-options/option-settings.php:152
+#: ../theme-options/option-settings.php:169
+#: ../theme-options/option-settings.php:329
+#: ../theme-options/option-settings.php:347
+#: ../theme-options/option-settings.php:514
+#: ../theme-options/option-settings.php:532
+#: ../theme-options/option-settings.php:594
+#: ../theme-options/option-settings.php:613
+#: ../theme-options/option-settings.php:641
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:17
+#: ../../core/theme-options/option-settings.php:153
+#: ../../core/theme-options/option-settings.php:170
+#: ../../core/theme-options/option-settings.php:330
+#: ../../core/theme-options/option-settings.php:348
+#: ../../core/theme-options/option-settings.php:515
+#: ../../core/theme-options/option-settings.php:533
+#: ../../core/theme-options/option-settings.php:595
+#: ../../core/theme-options/option-settings.php:614
+#: ../../core/theme-options/option-settings.php:642
+#: ../theme-options/option-settings.php:17
+#: ../theme-options/option-settings.php:153
+#: ../theme-options/option-settings.php:170
+#: ../theme-options/option-settings.php:330
+#: ../theme-options/option-settings.php:348
+#: ../theme-options/option-settings.php:515
+#: ../theme-options/option-settings.php:533
+#: ../theme-options/option-settings.php:595
+#: ../theme-options/option-settings.php:614
+#: ../theme-options/option-settings.php:642
+msgid "Save Options"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:28
+#: ../theme-options/option-settings.php:28
+msgid "Theme Skin Layout"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:36
+#: ../theme-options/option-settings.php:36
+msgid "Theme Skin Schemes"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:39
+#: ../theme-options/option-settings.php:39
+msgid "Default"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:40
+#: ../theme-options/option-settings.php:40
+msgid "Green"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:41
+#: ../theme-options/option-settings.php:41
+msgid "Red"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:42
+#: ../theme-options/option-settings.php:42
+msgid "Pink"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:43
+#: ../theme-options/option-settings.php:43
+msgid "Orange"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:44
+#: ../theme-options/option-settings.php:44
+msgid "Cyan"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:45
+#: ../theme-options/option-settings.php:45
+msgid "Purple"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:46
+#: ../theme-options/option-settings.php:46
+msgid "Yellow"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:47
+#: ../theme-options/option-settings.php:47
+msgid "Bridge"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:48
+#: ../theme-options/option-settings.php:48
+msgid "Light Blue"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:49
+#: ../theme-options/option-settings.php:49
+msgid "Dark Red"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:50
+#: ../theme-options/option-settings.php:50
+msgid "Slate"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:51
+#: ../theme-options/option-settings.php:51
+msgid "Select color for you theme."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:54
+#: ../theme-options/option-settings.php:54
+msgid "Theme Layout"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:56
+#: ../theme-options/option-settings.php:56
+msgid "wide"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:57
+#: ../theme-options/option-settings.php:57
+msgid "boxed"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:59
+#: ../theme-options/option-settings.php:59
+msgid "With the Help of box layout you can show sites background"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:62
+#: ../theme-options/option-settings.php:62
+msgid "Custom background "
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:94
+#: ../theme-options/option-settings.php:94
+msgid "WordPress Custom Background"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:96
+#: ../theme-options/option-settings.php:96
+msgid "Enable Custom Background .Set background"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:96
+#: ../../core/theme-options/option-settings.php:106
+#: ../../core/theme-options/option-settings.php:129
+#: ../theme-options/option-settings.php:96
+#: ../theme-options/option-settings.php:106
+#: ../theme-options/option-settings.php:129
+msgid "Click Here"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:105
+#: ../theme-options/option-settings.php:105
+msgid "Home-Page or Custom Page"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:106
+#: ../theme-options/option-settings.php:106
+msgid "Enable Custom Static Front-Page."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:109
+#: ../theme-options/option-settings.php:109
+msgid "Custom Logo"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:112
+#: ../theme-options/option-settings.php:112
+msgid "Add custom logo from here suggested size is 150X50"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:118
+#: ../theme-options/option-settings.php:118
+msgid "Logo Height"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:120
+#: ../theme-options/option-settings.php:120
+msgid ""
+"Default Logo Height : 55px, if you want to increase than specify your value"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:123
+#: ../theme-options/option-settings.php:123
+msgid "Logo Width"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:125
+#: ../theme-options/option-settings.php:125
+msgid ""
+"Default Logo Width : 150px, if you want to increase than specify your value"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:128
+#: ../theme-options/option-settings.php:128
+msgid "Text Title"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:129
+#: ../theme-options/option-settings.php:129
+msgid "Enable text-based Site Title.   Setup title"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:132
+#: ../theme-options/option-settings.php:132
+msgid "Custom Favicon"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:135
+#: ../theme-options/option-settings.php:135
+msgid "Make sure you upload .icon image type which is not more then 25X25 px."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:141
+#: ../theme-options/option-settings.php:141
+msgid "Custom css"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:143
+#: ../theme-options/option-settings.php:143
+msgid ""
+"This is a powerful feature provided here. No need to use custom css plugin, "
+"just paste your css code and see the magic."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:146
+#: ../theme-options/option-settings.php:146
+msgid "Home-Blog Heading"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:148
+#: ../theme-options/option-settings.php:148
+msgid "Home Blog Heading "
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:162
+#: ../theme-options/option-settings.php:162
+msgid "Slidshow Settings"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:180
+#: ../theme-options/option-settings.php:180
+msgid "Home Slide 1"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:188
+#: ../theme-options/option-settings.php:188
+msgid "Home Slide Image One"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:191
+#: ../theme-options/option-settings.php:191
+msgid "Add Home Slide image here, size suggestion is 1280X450."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:195
+#: ../theme-options/option-settings.php:195
+msgid "Home Slide Image Title One"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:197
+#: ../../core/theme-options/option-settings.php:237
+#: ../../core/theme-options/option-settings.php:284
+#: ../theme-options/option-settings.php:197
+#: ../theme-options/option-settings.php:237
+#: ../theme-options/option-settings.php:284
+msgid "Type Home Slide Image Title Here"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:198
+#: ../theme-options/option-settings.php:198
+msgid "Home Slide Image Description One"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:200
+#: ../../core/theme-options/option-settings.php:242
+#: ../../core/theme-options/option-settings.php:288
+#: ../theme-options/option-settings.php:200
+#: ../theme-options/option-settings.php:242
+#: ../theme-options/option-settings.php:288
+msgid "Type Home Slide Image Description Here"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:201
+#: ../theme-options/option-settings.php:201
+msgid "Home Slide Image Button Text One"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:203
+#: ../../core/theme-options/option-settings.php:248
+#: ../../core/theme-options/option-settings.php:292
+#: ../theme-options/option-settings.php:203
+#: ../theme-options/option-settings.php:248
+#: ../theme-options/option-settings.php:292
+msgid "Type Home Slide Image Button Text Here"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:204
+#: ../theme-options/option-settings.php:204
+msgid "Home Slide Image Button Link One"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:206
+#: ../../core/theme-options/option-settings.php:254
+#: ../../core/theme-options/option-settings.php:296
+#: ../theme-options/option-settings.php:206
+#: ../theme-options/option-settings.php:254
+#: ../theme-options/option-settings.php:296
+msgid "Type Home Slide Image Button Link Here"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:219
+#: ../theme-options/option-settings.php:219
+msgid "Home Slide 2"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:227
+#: ../theme-options/option-settings.php:227
+msgid "Home Slide Image Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:230
+#: ../../core/theme-options/option-settings.php:277
+#: ../theme-options/option-settings.php:230
+#: ../theme-options/option-settings.php:277
+msgid "Add Home Slide image here, size suggestion is 1400X570."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:235
+#: ../theme-options/option-settings.php:235
+msgid "Home Slide Image Title Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:240
+#: ../theme-options/option-settings.php:240
+msgid "Home Slide Image Description Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:246
+#: ../theme-options/option-settings.php:246
+msgid "Home Slide Image Button Text Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:252
+#: ../theme-options/option-settings.php:252
+msgid "Home Slide Image Button Link Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:266
+#: ../theme-options/option-settings.php:266
+msgid "Home Slide 3"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:274
+#: ../theme-options/option-settings.php:274
+msgid "Home Slide Image Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:282
+#: ../theme-options/option-settings.php:282
+msgid "Home Slide Image Title Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:286
+#: ../theme-options/option-settings.php:286
+msgid "Home Slide Image Description Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:290
+#: ../theme-options/option-settings.php:290
+msgid "Home Slide Image Button Text Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:294
+#: ../theme-options/option-settings.php:294
+msgid "Home Slide Image Button Link Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:310
+#: ../theme-options/option-settings.php:310
+msgid "More Slides"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:319
+#: ../theme-options/option-settings.php:319
+msgid "Add Unlimited slides for your sideshow "
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:340
+#: ../theme-options/option-settings.php:340
+msgid "Service Settings"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:354
+#: ../../core/theme-options/option-settings.php:375
+#: ../../core/theme-options/option-settings.php:408
+#: ../../core/theme-options/option-settings.php:440
+#: ../../core/theme-options/option-settings.php:471
+#: ../theme-options/option-settings.php:354
+#: ../theme-options/option-settings.php:375
+#: ../theme-options/option-settings.php:408
+#: ../theme-options/option-settings.php:440
+#: ../theme-options/option-settings.php:471
+msgid "Service Title"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:356
+#: ../theme-options/option-settings.php:356
+msgid "Type here your service heading"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:359
+#: ../../core/theme-options/option-settings.php:382
+#: ../../core/theme-options/option-settings.php:415
+#: ../../core/theme-options/option-settings.php:447
+#: ../../core/theme-options/option-settings.php:478
+#: ../theme-options/option-settings.php:359
+#: ../theme-options/option-settings.php:382
+#: ../theme-options/option-settings.php:415
+#: ../theme-options/option-settings.php:447
+#: ../theme-options/option-settings.php:478
+msgid "Service Description"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:361
+#: ../theme-options/option-settings.php:361
+msgid "Type here your service Description"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:368
+#: ../theme-options/option-settings.php:368
+msgid "Service one"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:377
+#: ../../core/theme-options/option-settings.php:410
+#: ../../core/theme-options/option-settings.php:442
+#: ../../core/theme-options/option-settings.php:473
+#: ../theme-options/option-settings.php:377
+#: ../theme-options/option-settings.php:410
+#: ../theme-options/option-settings.php:442
+#: ../theme-options/option-settings.php:473
+msgid "Type here your service title"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:378
+#: ../../core/theme-options/option-settings.php:411
+#: ../../core/theme-options/option-settings.php:443
+#: ../../core/theme-options/option-settings.php:474
+#: ../theme-options/option-settings.php:378
+#: ../theme-options/option-settings.php:411
+#: ../theme-options/option-settings.php:443
+#: ../theme-options/option-settings.php:474
+msgid "Service  Icons"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:381
+#: ../../core/theme-options/option-settings.php:414
+#: ../../core/theme-options/option-settings.php:446
+#: ../../core/theme-options/option-settings.php:477
+#: ../theme-options/option-settings.php:381
+#: ../theme-options/option-settings.php:414
+#: ../theme-options/option-settings.php:446
+#: ../theme-options/option-settings.php:477
+msgid "Service Icon (Using Bootstrap icons name) like: fa fa-wordpress"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:381
+#: ../../core/theme-options/option-settings.php:414
+#: ../../core/theme-options/option-settings.php:446
+#: ../../core/theme-options/option-settings.php:477
+#: ../theme-options/option-settings.php:381
+#: ../theme-options/option-settings.php:414
+#: ../theme-options/option-settings.php:446
+#: ../theme-options/option-settings.php:477
+msgid "Get your Font Awesome icons"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:387
+#: ../../core/theme-options/option-settings.php:420
+#: ../../core/theme-options/option-settings.php:452
+#: ../../core/theme-options/option-settings.php:483
+#: ../theme-options/option-settings.php:387
+#: ../theme-options/option-settings.php:420
+#: ../theme-options/option-settings.php:452
+#: ../theme-options/option-settings.php:483
+msgid "Type here your service description."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:388
+#: ../../core/theme-options/option-settings.php:421
+#: ../../core/theme-options/option-settings.php:453
+#: ../../core/theme-options/option-settings.php:484
+#: ../theme-options/option-settings.php:388
+#: ../theme-options/option-settings.php:421
+#: ../theme-options/option-settings.php:453
+#: ../theme-options/option-settings.php:484
+msgid "Service  Link"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:390
+#: ../../core/theme-options/option-settings.php:423
+#: ../../core/theme-options/option-settings.php:455
+#: ../../core/theme-options/option-settings.php:486
+#: ../theme-options/option-settings.php:390
+#: ../theme-options/option-settings.php:423
+#: ../theme-options/option-settings.php:455
+#: ../theme-options/option-settings.php:486
+msgid "Type here your service link"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:400
+#: ../theme-options/option-settings.php:400
+msgid "Service Two"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:434
+#: ../theme-options/option-settings.php:434
+msgid "Service Three"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:465
+#: ../theme-options/option-settings.php:465
+msgid "Service Four"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:498
+#: ../theme-options/option-settings.php:498
+msgid "More Services"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:506
+#: ../theme-options/option-settings.php:506
+msgid "Add More Services on your Home Page."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:525
+#: ../theme-options/option-settings.php:525
+msgid "Social media"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:539
+#: ../theme-options/option-settings.php:539
+msgid "Contact Email:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:541
+#: ../theme-options/option-settings.php:541
+msgid "Enter Contact email address."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:544
+#: ../theme-options/option-settings.php:544
+msgid "Contact Phone Number:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:546
+#: ../theme-options/option-settings.php:546
+msgid "Enter Contact Phone Number."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:549
+#: ../theme-options/option-settings.php:549
+msgid "Enable Social media:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:550
+#: ../theme-options/option-settings.php:550
+msgid "Enable social media on Header ."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:551
+#: ../theme-options/option-settings.php:551
+msgid "Enable Social media in Footer ."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:554
+#: ../theme-options/option-settings.php:554
+msgid "Twitter Link:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:556
+#: ../theme-options/option-settings.php:556
+msgid "Enter twitter link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:559
+#: ../theme-options/option-settings.php:559
+msgid "Linkedin Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:561
+#: ../theme-options/option-settings.php:561
+msgid "Enter linkedin link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:565
+#: ../theme-options/option-settings.php:565
+msgid "Facebook Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:567
+#: ../theme-options/option-settings.php:567
+msgid "Enter facebook link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:571
+#: ../theme-options/option-settings.php:571
+msgid "Google Plus Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:573
+#: ../theme-options/option-settings.php:573
+msgid "Enter google plus link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:576
+#: ../theme-options/option-settings.php:576
+msgid "Flicker Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:578
+#: ../theme-options/option-settings.php:578
+msgid "Enter Flicker link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:581
+#: ../theme-options/option-settings.php:581
+msgid "You-tube Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:583
+#: ../theme-options/option-settings.php:583
+msgid "Enter You-tube link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:587
+#: ../theme-options/option-settings.php:587
+msgid "RSS Links:"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:589
+#: ../theme-options/option-settings.php:589
+msgid "Enter RSS link."
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:606
+#: ../theme-options/option-settings.php:606
+msgid "Footer Customization"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:620
+#: ../theme-options/option-settings.php:620
+msgid "Footer customization"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:622
+#: ../theme-options/option-settings.php:622
+msgid "Enter your footer customization text "
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:625
+#: ../theme-options/option-settings.php:625
+msgid "Developed by text"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:627
+#: ../theme-options/option-settings.php:627
+msgid "Enter developed by text"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:630
+#: ../theme-options/option-settings.php:630
+msgid "Developed by link text"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:632
+#: ../theme-options/option-settings.php:632
+msgid "Enter developed by link text  "
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:635
+#: ../theme-options/option-settings.php:635
+msgid "Developed by link"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:637
+#: ../theme-options/option-settings.php:637
+msgid "Enter developed by link"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:653
+#: ../theme-options/option-settings.php:653
+msgid "Pro Responsive Wordpress Theme"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:654
+#: ../theme-options/option-settings.php:654
+msgid "Get The Premium"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:654
+#: ../theme-options/option-settings.php:654
+msgid "in Just"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:657
+#: ../theme-options/option-settings.php:657
+msgid "Pro And Free Comparison Table"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:663
+#: ../theme-options/option-settings.php:663
+msgid "Feature"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:667
+#: ../theme-options/option-settings.php:667
+msgid "Easy to customize"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:669
+#: ../theme-options/option-settings.php:669
+msgid "Multi Color"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:670
+#: ../theme-options/option-settings.php:670
+msgid "Boxed & Wide"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:671
+#: ../theme-options/option-settings.php:671
+msgid "Widgetized Footer"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:672
+#: ../theme-options/option-settings.php:672
+msgid "Custom Widgets"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:673
+#: ../theme-options/option-settings.php:673
+msgid "Shortcode"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:674
+#: ../theme-options/option-settings.php:674
+msgid "Page Templates"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:675
+#: ../theme-options/option-settings.php:675
+msgid "Quick Support"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:676
+#: ../theme-options/option-settings.php:676
+msgid "Custom CSS"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:677
+#: ../theme-options/option-settings.php:677
+msgid "Custom Background"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:678
+#: ../theme-options/option-settings.php:678
+msgid "Logo & Header text"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:679
+#: ../theme-options/option-settings.php:679
+msgid "Portfolio Template with Isotop"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:680
+#: ../theme-options/option-settings.php:680
+msgid "Photobox and Lightbox enable Tamplates"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:681
+#: ../theme-options/option-settings.php:681
+msgid "Special Gallery Template"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:688
+#: ../theme-options/option-settings.php:688
+msgid "Free"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:700
+#: ../theme-options/option-settings.php:700
+msgid "WPORG Support"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:708
+#: ../theme-options/option-settings.php:708
+msgid "Enjoy Theme"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:716
+#: ../theme-options/option-settings.php:716
+msgid "Pro"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:727
+#: ../theme-options/option-settings.php:727
+msgid "Private Support Forum"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:735
+#: ../theme-options/option-settings.php:735
+msgid "Demo"
+msgstr ""
+
+#: ../../core/theme-options/option-settings.php:736
+#: ../theme-options/option-settings.php:736
+msgid "Buy"
+msgstr ""
+
+#: ../../footer.php:13
+msgid "About Guardian"
+msgstr ""
+
+#: ../../footer.php:14
+msgid ""
+"All the Lorem Ipsum generators on the Internet tend to repeat predefined an "
+"chunks as necessary, making this the first true generator on the Internet.\n"
+"\t\t\t\t\tAll the Lorem Ipsum generators on the Internet tend to repeat "
+"predefined Lorem Ipsum as their default model text, and a search for web "
+"sites."
+msgstr ""
+
+#: ../../footer.php:21
+msgid "Custom Menu"
+msgstr ""
+
+#: ../../footer.php:24
+msgid "Blog"
+msgstr ""
+
+#: ../../footer.php:25
+msgid "Service"
+msgstr ""
+
+#: ../../footer.php:26
+msgid "Portfolio"
+msgstr ""
+
+#: ../../footer.php:27
+msgid "About-us"
+msgstr ""
+
+#: ../../footer.php:28
+msgid "Team"
+msgstr ""
+
+#: ../../footer.php:29
+msgid "Contact -Us"
+msgstr ""
+
+#: ../../footer.php:36
+msgid "Recent Posts"
+msgstr ""
+
+#: ../../footer.php:38
+msgid "Awsome Slidershows"
+msgstr ""
+
+#: ../../footer.php:39
+msgid "Features and Typography"
+msgstr ""
+
+#: ../../footer.php:40
+msgid "Different &amp; Unique Pages"
+msgstr ""
+
+#: ../../footer.php:41
+msgid "Single and Portfolios"
+msgstr ""
+
+#: ../../footer.php:42
+msgid "Recent Blogs or News"
+msgstr ""
+
+#: ../../footer.php:43
+msgid "Post with Image"
+msgstr ""
+
+#: ../../footer.php:44
+msgid "Layered PSD Files"
+msgstr ""
+
+#: ../../footer.php:59
+msgid "http://wordpress.org/"
+msgstr ""
+
+#: ../../footer.php:59
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: ../../footer.php:96
+msgid "Scroll"
+msgstr ""
+
+#: ../../front-page.php:116 ../../front-page.php:125 ../../front-page.php:133
+#: ../../front-page.php:141 ../../functions.php:30 ../../functions.php:36
+#: ../../functions.php:42 ../../guardian-default-settings.php:29
+#: ../../guardian-default-settings.php:35
+#: ../../guardian-default-settings.php:41
+msgid "Read More"
+msgstr ""
+
+#: ../../front-page.php:121
+msgid "The point of using psum is that has more normal letters "
+msgstr ""
+
+#: ../../front-page.php:123 ../../front-page.php:131 ../../front-page.php:139
+msgid ""
+"Lorem Ipsum as their default model the and a search for lorem ipsum will "
+"uncover many web sites the stilin infancy versions have evolved over the "
+"years."
+msgstr ""
+
+#: ../../front-page.php:129
+msgid "Will cover many web sites still in their infancy websites"
+msgstr ""
+
+#: ../../front-page.php:137
+msgid "The point of using psum is that has more normal letters"
+msgstr ""
+
+#: ../../functions.php:25 ../../guardian-default-settings.php:14
+msgid "Our Latest Blog"
+msgstr ""
+
+#: ../../functions.php:28 ../../guardian-default-settings.php:27
+msgid "Responsive Theme"
+msgstr ""
+
+#: ../../functions.php:29 ../../functions.php:35 ../../functions.php:41
+#: ../../guardian-default-settings.php:28
+#: ../../guardian-default-settings.php:40
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque "
+"rutrum pellentesque imperdiet"
+msgstr ""
+
+#: ../../functions.php:34 ../../guardian-default-settings.php:33
+msgid "Custom Layout"
+msgstr ""
+
+#: ../../functions.php:46
+msgid "Multi purpose Our service"
+msgstr ""
+
+#: ../../functions.php:47 ../../guardian-default-settings.php:53
+msgid ""
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+msgstr ""
+
+#: ../../functions.php:49 ../../guardian-default-settings.php:55
+msgid "Idea"
+msgstr ""
+
+#: ../../functions.php:51 ../../functions.php:56 ../../functions.php:61
+#: ../../functions.php:66 ../../guardian-default-settings.php:57
+#: ../../guardian-default-settings.php:62
+#: ../../guardian-default-settings.php:67
+#: ../../guardian-default-settings.php:72
+msgid ""
+"There are many variations of passages of Lorem Ipsum available, but the "
+"majority have suffered alteration in."
+msgstr ""
+
+#: ../../functions.php:54 ../../guardian-default-settings.php:60
+msgid "Records"
+msgstr ""
+
+#: ../../functions.php:59 ../../guardian-default-settings.php:65
+msgid "WordPress"
+msgstr ""
+
+#: ../../functions.php:64 ../../guardian-default-settings.php:70
+msgid "Responsive"
+msgstr ""
+
+#: ../../functions.php:71
+msgid ""
+"Yepp! This is just a design for your awesome website and i am sure you gona "
+"love"
+msgstr ""
+
+#: ../../functions.php:73
+msgid "Purchase Now!"
+msgstr ""
+
+#: ../../functions.php:78
+msgid "guardian@gmail.com"
+msgstr ""
+
+#: ../../functions.php:79 ../../guardian-default-settings.php:88
+msgid "1 4488 8000 4500"
+msgstr ""
+
+#: ../../functions.php:93 ../../guardian-default-settings.php:109
+msgid "Copyright @ 2015 Guardian."
+msgstr ""
+
+#: ../../functions.php:94 ../../guardian-default-settings.php:110
+msgid " Developed By"
+msgstr ""
+
+#: ../../functions.php:95 ../../guardian-default-settings.php:111
+msgid "Weblizar"
+msgstr ""
+
+#: ../../functions.php:98 ../../guardian-default-settings.php:114
+msgid "Terms of Use"
+msgstr ""
+
+#: ../../functions.php:101 ../../guardian-default-settings.php:117
+msgid "Privacy Policy"
+msgstr ""
+
+#: ../../functions.php:127
+msgid "Primary Menu"
+msgstr ""
+
+#: ../../functions.php:157
+msgid "read more..."
+msgstr ""
+
+#: ../../functions.php:178
+msgid "Sidebar"
+msgstr ""
+
+#: ../../functions.php:180
+msgid "The primary widget area"
+msgstr ""
+
+#: ../../functions.php:188
+msgid "Footer Widget Area"
+msgstr ""
+
+#: ../../functions.php:190
+msgid "footer widget area"
+msgstr ""
+
+#: ../../functions.php:251 ../../post-content.php:27
+msgid "Pages:"
+msgstr ""
+
+#: ../../functions.php:253 ../../post-content.php:33
+msgid "Next page"
+msgstr ""
+
+#: ../../functions.php:254 ../../post-content.php:34
+msgid "Previous page"
+msgstr ""
+
+#: ../../functions.php:306
+msgid "Newer Posts"
+msgstr ""
+
+#: ../../functions.php:306
+msgid "Older Posts"
+msgstr ""
+
+#: ../../functions.php:335
+msgid "Archive by category \""
+msgstr ""
+
+#: ../../functions.php:385
+msgid "Search results for \""
+msgstr ""
+
+#: ../../functions.php:387
+msgid "Posts tagged \""
+msgstr ""
+
+#: ../../functions.php:391
+msgid "Articles posted by "
+msgstr ""
+
+#: ../../functions.php:393
+msgid "Error 404"
+msgstr ""
+
+#: ../../guardian-default-settings.php:34
+msgid ""
+"Lorem ipsum dolr sit amet, consectetur adipiscing metus elit. Quisque rutrum "
+"pellentesque imperdiet"
+msgstr ""
+
+#: ../../guardian-default-settings.php:52
+msgid "Our Services"
+msgstr ""
+
+#: ../../guardian-default-settings.php:87
+msgid "example@mail.com"
+msgstr ""
+
+#: ../../header.php:77
+msgid "Menu"
+msgstr ""
+
+#: ../../loop.php:13 ../../post-content.php:16
+msgid "by:"
+msgstr ""
+
+#: ../../loop.php:15 ../../post-content.php:18
+msgid "in:"
+msgstr ""
+
+#: ../../loop.php:17 ../../post-content.php:20
+msgid "note:"
+msgstr ""
+
+#: ../../loop.php:17 ../../post-content.php:20
+msgid "Comment"
+msgstr ""
+
+#: ../../loop.php:21 ../../post-content.php:25
+msgid "Read more..."
+msgstr ""
+
+#: ../../search.php:6
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../../searchform.php:3
+msgid "Enter Search Blog..."
+msgstr ""
+
+#: ../../searchform.php:4
+msgid "Search"
+msgstr ""
+
+#: ../../tag.php:6
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
