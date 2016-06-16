@@ -1,5 +1,5 @@
 node {
-  checkout scm
+  git 'https://github.com/puppetlabs-pmmteam/rgbank'
 
   stage 'Lint and unit tests'
   withEnv(['PATH=/usr/local/bin:$PATH']) {
