@@ -11,6 +11,7 @@ node {
   def version = env.BUILD_ID
   sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz src/'
   archive "rgbank-build-${version}.tar.gz"
+  step($class: 'hudson.plugins.copyartifact.CopyArtifact', projectName: "/" + env.JOB_NAME, filter: rgbank-build-${version}.tar.gz, target: "/var/www/html/builds/rgbank")
 
   stage 'Deploy to dev'
   puppetHiera path: 'development', key: 'rgbank-build-version', value: version
