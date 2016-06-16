@@ -9,7 +9,7 @@ node {
 
   stage 'Build and package'
   def version = env.GIT_COMMIT
-  sh "tar -czf rgbank-build-${version}.tar.gz src/"
+  sh 'tar -czf rgbank-build-$GIT_COMMIT.tar.gz src/'
   archive "rgbank-build-${version}.tar.gz"
 
   stage 'Deploy to dev'
