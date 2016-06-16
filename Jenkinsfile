@@ -8,17 +8,17 @@ node {
   }
 
   stage 'Build and package'
-  $version = env.GIT_COMMIT
+  def version = env.GIT_COMMIT
   sh "tar -czf rgbank-build-${version}"
   archive "rgbank-build-${version}"
 
   stage 'Deploy to dev'
-  puppetHiera path: 'development', key: 'rgbank-build-version', value: $version
+  puppetHiera path: 'development', key: 'rgbank-build-version', value: version
   puppetJob environment: 'dev', target: 'Rgbank::Web', credentialsId: 'pe-access-token'
 
   stage 'Promote to staging'
   input "Ready to deploy to staging?"
-  puppetHiera path: 'staging', key: 'rgbank-build-version', value: $version
+  puppetHiera path: 'staging', key: 'rgbank-build-version', value: version
   puppetJob environment: 'staging', target: 'Rgbank::Web', credentialsId: 'pe-access-token'
 
   stage 'Staging acceptance tests'
@@ -28,7 +28,7 @@ node {
   input "Ready to test deploy to production?"
 
   stage 'Noop production run'
-  puppetHiera path: 'production', key: 'rgbank-build-version', value: $version
+  puppetHiera path: 'production', key: 'rgbank-build-version', value: version
   puppetJob environment: 'production', noop: true, target: 'Rgbank::Web', credentialsId: 'pe-access-token'
 
 
