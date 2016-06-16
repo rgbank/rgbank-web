@@ -9,8 +9,8 @@ node {
 
   stage 'Build and package'
   def version = env.GIT_COMMIT
-  sh "tar -czf rgbank-build-${version}"
-  archive "rgbank-build-${version}"
+  sh "tar -czf rgbank-build-${version}.tar.gz src/"
+  archive "rgbank-build-${version}.tar.gz"
 
   stage 'Deploy to dev'
   puppetHiera path: 'development', key: 'rgbank-build-version', value: version
