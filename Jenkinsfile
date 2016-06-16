@@ -2,14 +2,15 @@ node {
   checkout scm
 
   stage 'Lint and unit tests'
-  sh 'bundle exec rspec spec/'
+  withEnv(['PATH=/usr/local/bin:$PATH']) {
+    sh 'bundle install'
+    sh 'bundle exec rspec spec/'
+  }
 
-  
   stage 'Build and package'
   $version = env.GIT_COMMIT
   sh "tar -czf rgbank-build-${version}"
   archive "rgbank-build-${version}"
-  stash includes: "rgbank-build-${version}"
 
   stage 'Deploy to dev'
   puppetHiera path: 'development', key: 'rgbank-build-version', value: $version
