@@ -14,12 +14,12 @@ node {
 
   stage 'Deploy to dev'
   puppetHiera path: 'development', key: 'rgbank-build-version', value: version
-  puppetJob environment: 'dev', target: 'Rgbank::Web', credentialsId: 'pe-access-token'
+  puppetJob environment: 'dev', target: 'Rgbank', credentialsId: 'pe-access-token'
 
   stage 'Promote to staging'
   input "Ready to deploy to staging?"
   puppetHiera path: 'staging', key: 'rgbank-build-version', value: version
-  puppetJob environment: 'staging', target: 'Rgbank::Web', credentialsId: 'pe-access-token'
+  puppetJob environment: 'staging', target: 'Rgbank', credentialsId: 'pe-access-token'
 
   stage 'Staging acceptance tests'
   // Run acceptance tests here to make sure no applications are broken
@@ -29,10 +29,10 @@ node {
 
   stage 'Noop production run'
   puppetHiera path: 'production', key: 'rgbank-build-version', value: version
-  puppetJob environment: 'production', noop: true, target: 'Rgbank::Web', credentialsId: 'pe-access-token'
+  puppetJob environment: 'production', noop: true, target: 'Rgbank', credentialsId: 'pe-access-token'
 
 
   stage 'Deploy to production'
   input "Ready to deploy to production?"
-  puppetJob environment: 'production', concurrency: 40, target: 'Rgbank::Web', credentialsId: 'pe-access-token'
+  puppetJob environment: 'production', concurrency: 40, target: 'Rgbank', credentialsId: 'pe-access-token'
 }
