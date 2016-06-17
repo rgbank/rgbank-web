@@ -9,7 +9,7 @@ node {
 
   stage 'Build and package'
   def version = env.BUILD_ID
-  sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz src/'
+  sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz src/*'
   archive "rgbank-build-${version}.tar.gz"
   step([$class: 'CopyArtifact', filter: "rgbank-build-${version}.tar.gz", fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_ID], target: '/var/www/html/builds/rgbank'])
 
