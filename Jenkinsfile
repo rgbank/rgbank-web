@@ -15,11 +15,15 @@ node {
 
   stage 'Deploy to dev'
   puppetHiera path: 'dev', key: 'rgbank-build-version', value: version
+  puppetHiera path: 'dev', key: 'rgbank-build-path', value: "http://10-32-173-237.rfc1918.puppetlabs.net/builds/rgbank/rgbank-build-${version}.tar.gz"
+  puppetCode environment: 'dev', credentialsId: 'pe-access-token'
   puppetJob environment: 'dev', target: 'Rgbank', credentialsId: 'pe-access-token'
 
   stage 'Promote to staging'
   input "Ready to deploy to staging?"
   puppetHiera path: 'staging', key: 'rgbank-build-version', value: version
+  puppetHiera path: 'staging', key: 'rgbank-build-path', value: "http://10-32-173-237.rfc1918.puppetlabs.net/builds/rgbank/rgbank-build-${version}.tar.gz"
+  puppetCode environment: 'staging', credentialsId: 'pe-access-token'
   puppetJob environment: 'staging', target: 'Rgbank', credentialsId: 'pe-access-token'
 
   stage 'Staging acceptance tests'
@@ -30,6 +34,8 @@ node {
 
   stage 'Noop production run'
   puppetHiera path: 'production', key: 'rgbank-build-version', value: version
+  puppetHiera path: 'production', key: 'rgbank-build-path', value: "http://10-32-173-237.rfc1918.puppetlabs.net/builds/rgbank/rgbank-build-${version}.tar.gz"
+  puppetCode environment: 'production', credentialsId: 'pe-access-token'
   puppetJob environment: 'production', noop: true, target: 'Rgbank', credentialsId: 'pe-access-token'
 
 
