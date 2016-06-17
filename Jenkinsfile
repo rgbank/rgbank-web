@@ -11,10 +11,10 @@ node {
   def version = env.BUILD_ID
   sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz src/'
   archive "rgbank-build-${version}.tar.gz"
-  step($class: 'hudson.plugins.copyartifact.CopyArtifact', projectName: "/" + env.JOB_NAME, filter: rgbank-build-${version}.tar.gz, target: "/var/www/html/builds/rgbank")
+  step([$class: 'CopyArtifact', filter: "rgbank-build-${version}.tar.gz", fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_ID], target: '/var/www/html/builds/rgbank'])
 
   stage 'Deploy to dev'
-  puppetHiera path: 'development', key: 'rgbank-build-version', value: version
+  puppetHiera path: 'dev', key: 'rgbank-build-version', value: version
   puppetJob environment: 'dev', target: 'Rgbank', credentialsId: 'pe-access-token'
 
   stage 'Promote to staging'
