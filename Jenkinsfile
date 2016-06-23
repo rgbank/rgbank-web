@@ -39,6 +39,7 @@ node {
   stage 'Noop production run'
   puppetHiera path: 'production', key: 'rgbank-build-version', value: version
   puppetHiera path: 'production', key: 'rgbank-build-path', value: "http://10-32-173-237.rfc1918.puppetlabs.net/builds/rgbank/rgbank-build-${version}.tar.gz"
+  puppetHiera path: 'production', key: 'rgbank-mock-sql-path', value: "http://10-32-173-237.rfc1918.puppetlabs.net/builds/rgbank/rgbank.sql"
   puppetCode environment: 'production', credentialsId: 'pe-access-token'
   puppetJob environment: 'production', noop: true, target: 'Rgbank', credentialsId: 'pe-access-token'
 
