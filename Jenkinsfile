@@ -1,5 +1,5 @@
 node {
-  git 'https://github.com/puppetlabs-pmmteam/rgbank'
+  git 'https://github.com/puppetlabs/rgbank'
 
   stage 'Lint and unit tests'
   withEnv(['PATH=/usr/local/bin:$PATH']) {
