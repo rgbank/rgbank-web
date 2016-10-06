@@ -344,5 +344,6 @@
 	}
 	if (is_admin()) {
 	require_once('core/admin/admin.php');
-	}
+  }
+  remove_filter('template_redirect','redirect_canonical');
 ?>
