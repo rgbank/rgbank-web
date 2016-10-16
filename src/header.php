@@ -20,6 +20,11 @@
 	<!-- Top header bar -->
 	<div id="topHeader">
 		<div class="wrapper">         
+      <div style="text-align:center;background-color:#333333;font-size:18px">
+        <font color="ebab32">
+          <strong>Welcome to PuppetConf 2016</strong>
+        </font>
+      </div>
 			<div class="top_nav">
 				<div class="container">					
 					<div class="right"><?php $guardian_image=get_header_image();
