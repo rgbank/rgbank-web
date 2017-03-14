@@ -2,7 +2,7 @@ node {
   git 'https://github.com/puppetlabs/rgbank'
 
   stage 'Lint and unit tests'
-  withEnv(['PATH=/usr/local/bin:$PATH']) {
+  withEnv(['PATH+EXTRA=/usr/local/bin']) {
     sh 'bundle install'
     sh 'bundle exec rspec spec/'
   }
