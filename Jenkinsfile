@@ -2,6 +2,7 @@ node {
   git 'https://github.com/puppetlabs/rgbank'
 
   def hostaddress = InetAddress.localHost.hostAddress
+  def version = env.BUILD_ID
 
   puppet.credentials 'pe-access-token'
 
@@ -13,7 +14,6 @@ node {
   }
 
   stage('Build and package') {
-    def version = env.BUILD_ID
     sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
     archive "rgbank-build-${version}.tar.gz"
     archive "rgbank.sql"
