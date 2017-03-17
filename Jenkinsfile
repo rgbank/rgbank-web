@@ -47,7 +47,6 @@ node {
 
   stage('Staging acceptance tests') {
     // Run acceptance tests here to make sure no applications are broken
-    sh true
   }
 
   stage('Promote to production') {
