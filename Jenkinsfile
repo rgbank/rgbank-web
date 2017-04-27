@@ -29,7 +29,9 @@ node {
   // BUILD ENVIRONMENT SETUP //
   // This uses the Dockerfile in this repo to spin up a testing agent
   // with all the system reqs in place
-  docker.build("rgbank-build-env:${version}")
+  stage('Prepare build environment'){
+    docker.build("rgbank-build-env:${version}")
+  }
 
   // STAGES //
   stage('Lint and unit tests') {
