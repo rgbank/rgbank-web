@@ -1,7 +1,7 @@
 FROM ruby:2.3.1
 
 RUN apt-get update && \
-    rpm -i http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm && \
+    dpkg -i http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
     apt-get update && \
     apt-get install puppet
 
