@@ -11,7 +11,7 @@ node {
     "files": [
       {
         "pattern": "rgbank-build-${version}.tar.gz",
-        "target": "rgbank-web",
+        "target": "rgbank-web"
       }
     ]
   }"""
@@ -19,7 +19,7 @@ node {
     "files": [
       {
         "pattern": "rgbank-web",
-        "target": "/opt/rgbank",
+        "target": "/opt/rgbank"
       }
     ]
   }"""
