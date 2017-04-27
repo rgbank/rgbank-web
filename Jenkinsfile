@@ -25,8 +25,8 @@ node {
       }
     ]
   }"""
-  def buildInfo1 = server.upload spec: uploadSpec
-  def buildInfo2 = server.download spec: downloadSpec
+  def buildInfo1 = artifactoryServer.upload spec: uploadSpec
+  def buildInfo2 = artifactoryServer.download spec: downloadSpec
   buildInfo1.append buildInfo2
 
   // BUILD ENVIRONMENT SETUP //
