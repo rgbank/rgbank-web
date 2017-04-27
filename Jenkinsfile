@@ -1,5 +1,5 @@
 node {
-  git 'https://gitlab.inf.puppet.vm/rgbank/rgbank-web'
+  git 'http://gitlab.inf.puppet.vm/rgbank/rgbank-web.git'
 
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
