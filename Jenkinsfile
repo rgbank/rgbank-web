@@ -36,10 +36,8 @@ node {
   // STAGES //
   stage('Lint and unit tests') {
     docker.image("rgbank-build-env:${version}").inside {
-			withEnv(['PATH+EXTRA=/usr/local/bin']) {
-				sh 'bundle install'
-				sh 'bundle exec rspec spec/'
-			}
+			sh '/usr/local/bin/bundle install'
+			sh '/usr/local/bin/bundle exec rspec spec/'
     }
   }
 
