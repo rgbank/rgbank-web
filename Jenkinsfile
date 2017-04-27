@@ -1,52 +1,81 @@
 node {
   git 'https://github.com/puppetlabs/rgbank'
 
+  puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
   def version = env.BUILD_ID
 
-  puppet.credentials 'pe-access-token'
+  // ARTIFACTORY SETUP //
+  def artifactoryServer = Artifactory.server 'artifactory'
+  def uploadSpec = """{
+    "files": [
+      {
+        "pattern": "rgbank-build-${version}.tar.gz",
+        "target": "rgbank-web",
+        "props": "build=${version}"
+      }
+    ]
+  }"""
+  def downloadSpec = """{
+    "files": [
+      {
+        "pattern": "rgbank-build-.*.tar.gz",
+        "target": "/opt/rgbank",
+        "props": "build=${version}"
+      }
+    ]
+  }"""
+  def buildInfo1 = server.upload spec: uploadSpec
+  def buildInfo2 = server.download spec: downloadSpec
+  buildInfo1.append buildInfo2
 
+  // BUILD ENVIRONMENT SETUP //
+  // This uses the Dockerfile in this repo to spin up a testing agent
+  // with all the system reqs in place
+  docker.build("rgbank-build-env:${version}")
+
+  // STAGES //
   stage('Lint and unit tests') {
-    withEnv(['PATH+EXTRA=/usr/local/bin']) {
-      sh 'bundle install'
-      sh 'bundle exec rspec spec/'
+    docker.image("rgbank-build-env:${version}").inside {
+			withEnv(['PATH+EXTRA=/usr/local/bin']) {
+				sh 'bundle install'
+				sh 'bundle exec rspec spec/'
+			}
     }
   }
 
   stage('Build and package') {
-    sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
+    docker.image("rgbank-build-env:${version}").inside {
+			sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
+    }
+
     archive "rgbank-build-${version}.tar.gz"
     archive "rgbank.sql"
-    step([$class: 'CopyArtifact', filter: "rgbank-build-${version}.tar.gz", fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_ID], target: '/var/www/html/builds/rgbank'])
-    step([$class: 'CopyArtifact', filter: "rgbank.sql", fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_ID], target: '/var/www/html/builds/rgbank'])
+    artifactoryServer.publishBuildInfo buildInfo1
   }
 
   stage('Deployment Test') {
     puppet.hiera scope: 'beaker', key: 'rgbank-build-version', value: version
-    puppet.hiera scope: 'beaker', key: 'rgbank-build-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank-build-${version}.tar.gz"
-    puppet.hiera scope: 'beaker', key: 'rgbank-mock-sql-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank.sql"
     // build job: 'puppetlabs-rgbank-spec', parameters: [string(name: 'COMMIT', value: env.rgbank_module_ver)]
   }
 
   stage('Deploy to dev'){
     puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
-    puppet.hiera scope: 'dev', key: 'rgbank-build-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank-build-${version}.tar.gz"
-    puppet.hiera scope: 'dev', key: 'rgbank-mock-sql-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank.sql"
     puppet.codeDeploy 'dev'
-    puppet.job 'dev', target: 'Rgbank'
+    puppet.job 'dev', application: 'Rgbank'
   }
 
   stage('Promote to staging') {
     input "Ready to deploy to staging?"
-    puppet.hiera scope: 'staging', key: 'rgbank-build-version', value: version
-    puppet.hiera scope: 'staging', key: 'rgbank-build-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank-build-${version}.tar.gz"
-    puppet.hiera scope: 'staging', key: 'rgbank-mock-sql-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank.sql"
+    puppet.hiera scope: 'rgbank-staging', key: 'rgbank-build-version', value: version
     puppet.codeDeploy 'staging'
-    puppet.job 'staging', target: 'Rgbank'
+    puppet.job 'staging', application: 'Rgbank'
   }
 
   stage('Staging acceptance tests') {
-    // Run acceptance tests here to make sure no applications are broken
+    docker.image("rgbank-build-env:${version}").inside {
+      sh 'echo success'
+    }
   }
 
   stage('Promote to production') {
@@ -54,15 +83,13 @@ node {
   }
 
   stage('Noop production run') {
-    puppet.hiera scope: 'production', key: 'rgbank-build-version', value: version
-    puppet.hiera scope: 'production', key: 'rgbank-build-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank-build-${version}.tar.gz"
-    puppet.hiera scope: 'production', key: 'rgbank-mock-sql-path', value: "http://" + hostaddress + "/builds/rgbank/rgbank.sql"
+    puppet.hiera scope: 'rgbank-production', key: 'rgbank-build-version', value: version
     puppet.codeDeploy 'production'
-    puppet.job 'production', noop: true, target: 'Rgbank'
+    puppet.job 'production', noop: true, application: 'Rgbank'
   }
 
   stage('Deploy to production') {
     input "Ready to deploy to production?"
-    puppet.job 'production', concurrency: 40, target: 'Rgbank'
+    puppet.job 'production', concurrency: 40, application: 'Rgbank'
   }
 }
