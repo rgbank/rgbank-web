@@ -24,8 +24,8 @@ node {
     ]
   }"""
   def buildInfo1 = artifactoryServer.upload spec: uploadSpec
-  def buildInfo2 = artifactoryServer.download spec: downloadSpec
-  buildInfo1.append buildInfo2
+  //def buildInfo2 = artifactoryServer.download spec: downloadSpec
+  //buildInfo1.append buildInfo2
 
   // BUILD ENVIRONMENT SETUP //
   // This uses the Dockerfile in this repo to spin up a testing agent
@@ -50,6 +50,7 @@ node {
     archive "rgbank-build-${version}.tar.gz"
     archive "rgbank.sql"
     artifactoryServer.publishBuildInfo buildInfo1
+    artifactoryUpload spec: uploadSpec, buildInfo: buildInfo1, server: artifactoryServer
   }
 
   stage('Deployment Test') {
