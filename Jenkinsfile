@@ -12,16 +12,14 @@ node {
       {
         "pattern": "rgbank-build-${version}.tar.gz",
         "target": "rgbank-web",
-        "props": "build=${version}"
       }
     ]
   }"""
   def downloadSpec = """{
     "files": [
       {
-        "pattern": "rgbank-build-.*.tar.gz",
+        "pattern": "rgbank-web",
         "target": "/opt/rgbank",
-        "props": "build=${version}"
       }
     ]
   }"""
