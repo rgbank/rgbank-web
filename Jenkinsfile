@@ -1,5 +1,5 @@
 node {
-  git 'http://gitlab.inf.puppet.vm/rgbank/rgbank-web.git', credentialsId: 'gitlab-casey-auth'
+  git url: 'http://gitlab.inf.puppet.vm/rgbank/rgbank-web.git', credentialsId: 'gitlab-casey-auth'
 
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
