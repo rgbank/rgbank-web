@@ -15,15 +15,14 @@ node {
       }
     ]
   }"""
-  def downloadSpec = """{
-    "files": [
-      {
-        "pattern": "rgbank-web",
-        "target": "/opt/rgbank"
-      }
-    ]
-  }"""
-  def buildInfo1 = artifactoryServer.upload spec: uploadSpec
+  //def downloadSpec = """{
+  //  "files": [
+  //    {
+  //      "pattern": "rgbank-web",
+  //      "target": "/opt/rgbank"
+  //    }
+  //  ]
+  //}"""
   //def buildInfo2 = artifactoryServer.download spec: downloadSpec
   //buildInfo1.append buildInfo2
 
@@ -49,8 +48,9 @@ node {
 
     archive "rgbank-build-${version}.tar.gz"
     archive "rgbank.sql"
+    def buildInfo = artifactoryServer.upload spec: uploadSpec
     artifactoryServer.publishBuildInfo buildInfo1
-    artifactoryUpload spec: uploadSpec, buildInfo: buildInfo1, server: artifactoryServer
+    //artifactoryUpload spec: uploadSpec, buildInfo: buildInfo1, server: artifactoryServer
   }
 
   stage('Deployment Test') {
