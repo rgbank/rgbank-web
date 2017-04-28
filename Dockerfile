@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM centos:7
 
 RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm && \
     yum makecache && \
