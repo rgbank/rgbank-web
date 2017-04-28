@@ -10,14 +10,13 @@ node {
   }
 
   stage('Lint and unit tests') {
-    input "The version is ${env.BRANCH_ID}"
     docker.image("rgbank-build-env:${version}").inside {
-			//sh "echo ${env.BRANCH_ID}"
+			//sh "bundle install"
 			//sh '/usr/local/bin/bundle exec rspec spec/'
     }
   }
 
-  if(env.BUILD_ID != "master") {
+  if(env.BRANCH_NAME != "master") {
     stage('Build and package') {
       artifactoryServer = Artifactory.server 'artifactory'
       uploadSpec = """{
@@ -45,7 +44,7 @@ node {
     }
   }
 
-  if(env.BRANCH_ID == "master") {
+  if(env.BRANCH_NAME == "master") {
 
     stage('Promote to staging') {
       input "Ready to deploy to staging?"
