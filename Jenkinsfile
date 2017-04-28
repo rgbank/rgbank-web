@@ -6,11 +6,11 @@ node {
 
   stage('Prepare build environment'){
     checkout scm
-    docker.build("rgbank-build-env")
+    docker.build("rgbank-build-env:latest")
   }
 
   stage('Lint and unit tests') {
-    docker.image("rgbank-build-env").inside {
+    docker.image("rgbank-build-env:latest").inside {
 			//sh "bundle install"
 			//sh '/usr/local/bin/bundle exec rspec spec/'
     }
@@ -28,7 +28,7 @@ node {
         ]
       }"""
 
-      docker.image("rgbank-build-env:${version}").inside {
+      docker.image("rgbank-build-env:latest").inside {
 	  		sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
       }
 
@@ -54,7 +54,7 @@ node {
     }
   
     stage('Staging acceptance tests') {
-      docker.image("rgbank-build-env:${version}").inside {
+      docker.image("rgbank-build-env:latest").inside {
         sh 'echo success'
       }
     }
