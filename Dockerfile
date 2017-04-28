@@ -1,9 +1,7 @@
 FROM ruby:2.3.1
 
-RUN apt-get update && \
-    wget http://apt.puppetlabs.com/puppetlabs-release-jessie.deb && \
-    dpkg -i puppetlabs-release-jessie.deb && \
-    apt-get update && \
-    apt-get -y install puppet-agent
+RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm && \
+    yum makecache && \
+    yum install -y puppet-agent
 
-RUN puppet module install puppetlabs-aws
+RUN /opt/puppetlabs/bin/puppet module install puppetlabs-aws
