@@ -6,11 +6,11 @@ node {
 
   stage('Prepare build environment'){
     checkout scm
-    docker.build("rgbank-build-env:latest")
+    docker.build("rgbank-build-env")
   }
 
   stage('Lint and unit tests') {
-    docker.image("rgbank-build-env:latest").inside {
+    docker.image("rgbank-build-env").inside {
 			//sh "bundle install"
 			//sh '/usr/local/bin/bundle exec rspec spec/'
     }
