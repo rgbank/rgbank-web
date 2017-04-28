@@ -10,8 +10,9 @@ node {
   }
 
   stage('Lint and unit tests') {
+    input "The version is ${env.BRANCH_ID}"
     docker.image("rgbank-build-env:${version}").inside {
-			sh "echo ${env.BRANCH_ID}"
+			//sh "echo ${env.BRANCH_ID}"
 			//sh '/usr/local/bin/bundle exec rspec spec/'
     }
   }
