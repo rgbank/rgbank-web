@@ -6,43 +6,45 @@ node {
 
   stage('Prepare build environment'){
     checkout scm
-    docker.build("rgbank-build-env:${version}")
+    docker.build("rgbank-build-env:latest")
   }
 
   stage('Lint and unit tests') {
-    docker.image("rgbank-build-env:${version}").inside {
-			//sh '/usr/local/bin/bundle install'
+    docker.image("rgbank-build-env:latest").inside {
+			//sh "bundle install"
 			//sh '/usr/local/bin/bundle exec rspec spec/'
     }
   }
 
-  stage('Build and package') {
-    artifactoryServer = Artifactory.server 'artifactory'
-    uploadSpec = """{
-      "files": [
-        {
-          "pattern": "rgbank-build-${version}.tar.gz",
-          "target": "rgbank-web"
-        }
-      ]
-    }"""
+  if(env.BRANCH_NAME != "master") {
+    stage('Build and package') {
+      artifactoryServer = Artifactory.server 'artifactory'
+      uploadSpec = """{
+        "files": [
+          {
+            "pattern": "rgbank-build-${version}.tar.gz",
+            "target": "rgbank-web"
+          }
+        ]
+      }"""
 
-    docker.image("rgbank-build-env:${version}").inside {
-			sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
+      docker.image("rgbank-build-env:latest").inside {
+	  		sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
+      }
+
+      archive "rgbank-build-${version}.tar.gz"
+      archive "rgbank.sql"
+      artifactoryServer.upload spec: uploadSpec
     }
 
-    archive "rgbank-build-${version}.tar.gz"
-    archive "rgbank.sql"
-    artifactoryServer.upload spec: uploadSpec
+    stage('Deploy to dev'){
+      puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
+      puppet.codeDeploy 'dev'
+      puppet.job 'dev', application: 'Rgbank'
+    }
   }
 
-  stage('Deploy to dev'){
-    puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
-    puppet.codeDeploy 'dev'
-    puppet.job 'dev', application: 'Rgbank'
-  }
-
-  if(env.BRANCH_ID == "master") {
+  if(env.BRANCH_NAME == "master") {
 
     stage('Promote to staging') {
       input "Ready to deploy to staging?"
@@ -52,7 +54,7 @@ node {
     }
   
     stage('Staging acceptance tests') {
-      docker.image("rgbank-build-env:${version}").inside {
+      docker.image("rgbank-build-env:latest").inside {
         sh 'echo success'
       }
     }
