@@ -1,4 +1,4 @@
-$epp_script = @("EPP")
+$epp_script = @("EPP"/)
 #/bin/bash
 curl -k https://<%= \$master_address %>:8140/packages/current/install.bash | sudo bash -s extension_requests:pp_role=<%= \$pp_role %> extension_requests:pp_appenv=<%= \$pp_appenv %>
 | EPP
