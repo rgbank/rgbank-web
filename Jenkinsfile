@@ -36,7 +36,7 @@ node {
       }"""
 
       docker.image("rgbank-build-env:latest").inside {
-        sh "tar -czf rgbank-build-$BUILD_ID.tar.gz -C src ."
+        sh "/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src ."
       }
 
       archive "rgbank-build-${version}.tar.gz"
