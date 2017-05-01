@@ -57,7 +57,7 @@ node {
             "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
             "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
           ]) {
-            sh "/opt/puppetlabs/bin/puppet apply /root/rgbank-aws-dev-env.pp"
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp"
           }
         }
       }
