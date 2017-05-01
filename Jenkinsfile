@@ -46,7 +46,7 @@ node {
     }
 
     stage("Provision ${env.BRANCH_NAME} environment") {
-      docker.image("rgbank-build-env:latest").inside {
+      docker.image("rgbank-build-env:latest").inside('--user 0:0') {
 				withCredentials([
           string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
           string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
