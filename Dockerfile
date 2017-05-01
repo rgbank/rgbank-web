@@ -7,3 +7,4 @@ RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm &
 RUN /opt/puppetlabs/bin/puppet module install puppetlabs-aws
 
 COPY provision/rgbank-aws-dev-env.pp /root/
+COPY provision/puppet-agent.epp /root/
