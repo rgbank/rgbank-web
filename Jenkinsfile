@@ -3,6 +3,7 @@ node {
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
   def version = env.BUILD_ID
+  def puppetMasterAdress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
 
   stage('Prepare build environment'){
     checkout scm
@@ -19,25 +20,50 @@ node {
   if(env.BRANCH_NAME != "master") {
     stage('Build and package') {
       artifactoryServer = Artifactory.server 'artifactory'
-      uploadSpec = """{
-        "files": [
-          {
+
+      buildUploadSpec = """{
+        "files": [ {
             "pattern": "rgbank-build-${version}.tar.gz",
             "target": "rgbank-web"
-          }
-        ]
+          } ]
+      }"""
+
+      devSQLUploadSpec = """{
+        "files": [ {
+            "pattern": "rgbank.sql",
+            "target": "rgbank-web"
+          } ]
       }"""
 
       docker.image("rgbank-build-env:latest").inside {
-	  		sh 'tar -czf rgbank-build-$BUILD_ID.tar.gz -C src .'
+        sh "/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src ."
       }
 
       archive "rgbank-build-${version}.tar.gz"
       archive "rgbank.sql"
-      artifactoryServer.upload spec: uploadSpec
+      artifactoryServer.upload spec: buildUploadSpec
+      artifactoryServer.upload spec: devSQLUploadSpec
     }
 
-    stage('Deploy to dev'){
+    stage("Provision ${env.BRANCH_NAME} environment") {
+      docker.image("rgbank-build-env:latest").inside('--user 0:0') {
+				withCredentials([
+          string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
+          string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
+        ]) {
+          withEnv([
+            "FACTER_puppet_master_address=${puppetMasterAdress}",
+            "FACTER_branch=${env.BRANCH_NAME}",
+            "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
+            "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
+          ]) {
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp"
+          }
+        }
+      }
+    }
+
+    stage('Deploy to dev') {
       puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
       puppet.codeDeploy 'dev'
       puppet.job 'dev', application: 'Rgbank'
