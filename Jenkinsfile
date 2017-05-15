@@ -10,29 +10,29 @@ node {
     docker.build("rgbank-build-env:latest")
   }
 
-  stage('Lint and unit tests') {
-    docker.image("rgbank-build-env:latest").inside {
-			//sh "bundle install"
-			//sh '/usr/local/bin/bundle exec rspec spec/'
-    }
-  }
-
   if(env.BRANCH_NAME != "master") {
+    stage('Lint and unit tests') {
+      docker.image("rgbank-build-env:latest").inside {
+        //sh "bundle install"
+        //sh '/usr/local/bin/bundle exec rspec spec/'
+      }
+    }
+
     stage('Build and package') {
       artifactoryServer = Artifactory.server 'artifactory'
 
       buildUploadSpec = """{
         "files": [ {
-            "pattern": "rgbank-build-${version}.tar.gz",
-            "target": "rgbank-web"
-          } ]
+          "pattern": "rgbank-build-${version}.tar.gz",
+          "target": "rgbank-web"
+        } ]
       }"""
 
       devSQLUploadSpec = """{
         "files": [ {
-            "pattern": "rgbank.sql",
-            "target": "rgbank-web"
-          } ]
+          "pattern": "rgbank.sql",
+          "target": "rgbank-web"
+        } ]
       }"""
 
       docker.image("rgbank-build-env:latest").inside {
@@ -47,7 +47,7 @@ node {
 
     stage("Provision ${env.BRANCH_NAME} environment") {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
-				withCredentials([
+        withCredentials([
           string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
           string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
         ]) {
@@ -63,9 +63,9 @@ node {
       }
     }
 
-    stage('Deploy to dev') {
+    stage("Deploy to ${env.BRANCH_NAME") {
       puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
-      puppet.codeDeploy 'dev'
+      puppet.codeDeploy env.BRANCH_NAME
       puppet.job 'dev', application: 'Rgbank'
     }
   }
