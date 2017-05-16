@@ -62,7 +62,7 @@ node {
       }
     }
 
-    stage("Deploy to ${env.BRANCH_NAME") {
+    stage("Deploy to ${env.BRANCH_NAME}") {
       puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
       puppet.codeDeploy env.BRANCH_NAME
       puppet.job 'dev', application: 'Rgbank'
