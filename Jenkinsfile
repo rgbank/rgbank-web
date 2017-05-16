@@ -48,7 +48,8 @@ node {
     stage("Provision ${env.BRANCH_NAME} environment") {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
         withCredentials([
-          string(credentialsId: 'vsphere-credentials', usernameVariable: 'VCENTER_USER', passwordVariable: 'VCENTER_PASSWORD'),
+          string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
+          string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
         ]) {
           withEnv([
             "FACTER_puppet_master_address=${puppetMasterAdress}",
