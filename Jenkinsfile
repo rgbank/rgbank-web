@@ -48,16 +48,15 @@ node {
     stage("Provision ${env.BRANCH_NAME} environment") {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
         withCredentials([
-          string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
-          string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
+          string(credentialsId: 'vsphere-credentials', usernameVariable: 'VCENTER_USER', passwordVariable: 'VCENTER_PASSWORD'),
         ]) {
           withEnv([
             "FACTER_puppet_master_address=${puppetMasterAdress}",
             "FACTER_branch=${env.BRANCH_NAME}",
-            "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
-            "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
+            "VCENTER_USER=${VCENTER_USER}",
+            "VCENTER_PASSWORD=${VCENTER_PASSWORD}"
           ]) {
-            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp"
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-vsphere-dev-env.pp"
           }
         }
       }
