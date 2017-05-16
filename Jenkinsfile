@@ -54,10 +54,10 @@ node {
           withEnv([
             "FACTER_puppet_master_address=${puppetMasterAdress}",
             "FACTER_branch=${env.BRANCH_NAME}",
-            "VCENTER_USER=${VCENTER_USER}",
-            "VCENTER_PASSWORD=${VCENTER_PASSWORD}"
+            "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
+            "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
           ]) {
-            sh "/opt/puppetlabs/bin/puppet apply /rgbank-vsphere-dev-env.pp"
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp"
           }
         }
       }
