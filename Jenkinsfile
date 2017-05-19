@@ -47,7 +47,7 @@ node {
 
     stage("Deploy to dev") {
       puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
-      puppet.job 'production', application: "Rgbank['dev']"
+      puppet.job 'production', application: "Rgbank[dev]"
     }
   }
 
