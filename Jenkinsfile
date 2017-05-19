@@ -45,28 +45,9 @@ node {
       artifactoryServer.upload spec: devSQLUploadSpec
     }
 
-    stage("Provision ${env.BRANCH_NAME} environment") {
-      docker.image("rgbank-build-env:latest").inside('--user 0:0') {
-        withCredentials([
-          string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
-          string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
-        ]) {
-          withEnv([
-            "FACTER_puppet_master_address=${puppetMasterAdress}",
-            "FACTER_branch=${env.BRANCH_NAME}",
-            "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
-            "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
-          ]) {
-            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp"
-          }
-        }
-      }
-    }
-
-    stage("Deploy to ${env.BRANCH_NAME}") {
+    stage("Deploy to dev") {
       puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
-      puppet.codeDeploy env.BRANCH_NAME
-      puppet.job 'dev', application: 'Rgbank'
+      puppet.job 'production', application: "Rgbank['dev']"
     }
   }
 
@@ -76,7 +57,7 @@ node {
       input "Ready to deploy to staging?"
       puppet.hiera scope: 'rgbank-staging', key: 'rgbank-build-version', value: version
       puppet.codeDeploy 'staging'
-      puppet.job 'staging', application: 'Rgbank'
+      puppet.job 'production', application: 'Rgbank[staging]'
     }
   
     stage('Staging acceptance tests') {
@@ -92,12 +73,12 @@ node {
     stage('Noop production run') {
       puppet.hiera scope: 'rgbank-production', key: 'rgbank-build-version', value: version
       puppet.codeDeploy 'production'
-      puppet.job 'production', noop: true, application: 'Rgbank'
+      puppet.job 'production', noop: true, application: 'Rgbank[production]'
     }
   
     stage('Deploy to production') {
       input "Ready to deploy to production?"
-      puppet.job 'production', concurrency: 40, application: 'Rgbank'
+      puppet.job 'production', concurrency: 40, application: 'Rgbank[production]'
     }
   }
 }
