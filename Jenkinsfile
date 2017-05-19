@@ -46,7 +46,9 @@ node {
     }
 
     stage("Deploy to dev") {
-      puppet.hiera scope: 'dev', key: 'rgbank-build-version', value: version
+      puppet.hiera scope: 'development', key: 'rgbank-build-version', value: version
+      puppet.hiera scope: 'development', key: 'rgbank-build-source-type', value: 'artifactory'
+      puppet.hiera scope: 'development', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', application: "Rgbank[dev]"
     }
   }
@@ -55,8 +57,9 @@ node {
 
     stage('Promote to staging') {
       input "Ready to deploy to staging?"
-      puppet.hiera scope: 'rgbank-staging', key: 'rgbank-build-version', value: version
-      puppet.codeDeploy 'staging'
+      puppet.hiera scope: 'staging', key: 'rgbank-build-version', value: version
+      puppet.hiera scope: 'staging', key: 'rgbank-build-source-type', value: 'artifactory'
+      puppet.hiera scope: 'staging', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', application: 'Rgbank[staging]'
     }
   
@@ -71,8 +74,9 @@ node {
     }
   
     stage('Noop production run') {
-      puppet.hiera scope: 'rgbank-production', key: 'rgbank-build-version', value: version
-      puppet.codeDeploy 'production'
+      puppet.hiera scope: 'production', key: 'rgbank-build-version', value: version
+      puppet.hiera scope: 'production', key: 'rgbank-build-source-type', value: 'artifactory'
+      puppet.hiera scope: 'production', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', noop: true, application: 'Rgbank[production]'
     }
   
