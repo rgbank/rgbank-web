@@ -2,7 +2,7 @@ node {
 
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
-  def version = env.BUILD_ID
+  def version = env.COMMIT
   def puppetMasterAdress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
 
   stage('Prepare build environment'){
@@ -48,7 +48,6 @@ node {
     stage("Deploy to dev") {
       puppet.hiera scope: 'development', key: 'rgbank-build-version', value: version
       puppet.hiera scope: 'development', key: 'rgbank-build-source-type', value: 'artifactory'
-      puppet.hiera scope: 'development', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', application: "Rgbank[dev]"
     }
   }
@@ -59,7 +58,6 @@ node {
       input "Ready to deploy to staging?"
       puppet.hiera scope: 'staging', key: 'rgbank-build-version', value: version
       puppet.hiera scope: 'staging', key: 'rgbank-build-source-type', value: 'artifactory'
-      puppet.hiera scope: 'staging', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', application: 'Rgbank[staging]'
     }
   
@@ -76,7 +74,6 @@ node {
     stage('Noop production run') {
       puppet.hiera scope: 'production', key: 'rgbank-build-version', value: version
       puppet.hiera scope: 'production', key: 'rgbank-build-source-type', value: 'artifactory'
-      puppet.hiera scope: 'production', key: 'rgbank-build-path', value: "http://artifactory.inf.puppet.vm:8081/artifactory/rgbank-web/rgbank-build-${version}.tar.gz"
       puppet.job 'production', noop: true, application: 'Rgbank[production]'
     }
   
