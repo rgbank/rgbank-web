@@ -2,7 +2,7 @@ node {
 
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
-  def version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+  def version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(6)
   def puppetMasterAdress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
 
   stage('Prepare build environment'){
