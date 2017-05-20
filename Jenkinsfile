@@ -2,11 +2,12 @@ node {
 
   puppet.credentials 'pe-access-token'
   def hostaddress = InetAddress.localHost.hostAddress
-  def version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(6)
+  def version
   def puppetMasterAdress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
 
   stage('Prepare build environment'){
     checkout scm
+    version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(6)
     docker.build("rgbank-build-env:latest")
   }
 
