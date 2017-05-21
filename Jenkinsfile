@@ -11,40 +11,41 @@ node {
     docker.build("rgbank-build-env:latest")
   }
 
+  stage('Lint and unit tests') {
+    docker.image("rgbank-build-env:latest").inside {
+      //sh "bundle install"
+      //sh '/usr/local/bin/bundle exec rspec spec/'
+    }
+  }
+
+  stage('Build and package') {
+    artifactoryServer = Artifactory.server 'artifactory'
+
+    buildUploadSpec = """{
+      "files": [ {
+        "pattern": "rgbank-build-${version}.tar.gz",
+        "target": "rgbank-web"
+      } ]
+    }"""
+
+    devSQLUploadSpec = """{
+      "files": [ {
+        "pattern": "rgbank.sql",
+        "target": "rgbank-web"
+      } ]
+    }"""
+
+    docker.image("rgbank-build-env:latest").inside {
+      sh "/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src ."
+    }
+
+    archive "rgbank-build-${version}.tar.gz"
+    archive "rgbank.sql"
+    artifactoryServer.upload spec: buildUploadSpec
+    artifactoryServer.upload spec: devSQLUploadSpec
+  }
+
   if(env.BRANCH_NAME != "master") {
-    stage('Lint and unit tests') {
-      docker.image("rgbank-build-env:latest").inside {
-        //sh "bundle install"
-        //sh '/usr/local/bin/bundle exec rspec spec/'
-      }
-    }
-
-    stage('Build and package') {
-      artifactoryServer = Artifactory.server 'artifactory'
-
-      buildUploadSpec = """{
-        "files": [ {
-          "pattern": "rgbank-build-${version}.tar.gz",
-          "target": "rgbank-web"
-        } ]
-      }"""
-
-      devSQLUploadSpec = """{
-        "files": [ {
-          "pattern": "rgbank.sql",
-          "target": "rgbank-web"
-        } ]
-      }"""
-
-      docker.image("rgbank-build-env:latest").inside {
-        sh "/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src ."
-      }
-
-      archive "rgbank-build-${version}.tar.gz"
-      archive "rgbank.sql"
-      artifactoryServer.upload spec: buildUploadSpec
-      artifactoryServer.upload spec: devSQLUploadSpec
-    }
 
     stage("Deploy to dev") {
       puppet.hiera scope: 'development', key: 'rgbank-build-version', value: version
