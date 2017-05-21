@@ -45,6 +45,11 @@ node {
     artifactoryServer.upload spec: devSQLUploadSpec
   }
 
+  stage('Update development build version') {
+    puppet.hiera scope: 'development', key: 'rgbank-build-version', value: version
+    puppet.hiera scope: 'development', key: 'rgbank-build-source-type', value: 'artifactory'
+  }
+
   if(env.BRANCH_NAME == "master") {
 
     stage('Promote to staging') {
