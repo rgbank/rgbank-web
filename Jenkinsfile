@@ -50,7 +50,6 @@ node {
     stage("Deploy to dev") {
       puppet.hiera scope: 'development', key: 'rgbank-build-version', value: version
       puppet.hiera scope: 'development', key: 'rgbank-build-source-type', value: 'artifactory'
-      puppet.hiera scope: 'development', key: 'rgbank::web::enable_header', value: true
       puppet.job 'production', application: "Rgbank[dev]"
     }
   }
