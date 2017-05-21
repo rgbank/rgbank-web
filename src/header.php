@@ -20,7 +20,6 @@
 	<!-- Top header bar -->
 	<div id="topHeader">
 		<div class="wrapper">
-      <?php if(puppetconf == true){include 'puppetconf_header.php';} ?>
 			<div class="top_nav">
 				<div class="container">					
 					<div class="right"><?php $guardian_image=get_header_image();
