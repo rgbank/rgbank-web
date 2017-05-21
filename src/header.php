@@ -20,6 +20,14 @@
 	<!-- Top header bar -->
 	<div id="topHeader">
 		<div class="wrapper">
+      <?php require('variables.php'); ?>
+      <?php if ($enable_header) { ?>
+      <?php echo "Version: ${version}"; ?>
+      <?php echo "Environment: ${environment}"; ?>
+      <?php echo "Build source: ${build_source_type}"; ?>
+      <?php echo "Repository: ${build_source}"; ?>
+      <?php echo "Artifactory Server: ${artifactory_server}"; ?>
+      <? } ?>
 			<div class="top_nav">
 				<div class="container">					
 					<div class="right"><?php $guardian_image=get_header_image();
