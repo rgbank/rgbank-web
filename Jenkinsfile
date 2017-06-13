@@ -85,8 +85,8 @@ node {
         sh("/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src .")
       }
 
-      #archive "rgbank-build-${version}.tar.gz"
-      #archive "rgbank.sql"
+      //archive "rgbank-build-${version}.tar.gz"
+      //archive "rgbank.sql"
       artifactoryServer.upload spec: buildUploadSpec
       artifactoryServer.upload spec: devSQLUploadSpec
     }
