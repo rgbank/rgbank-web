@@ -1,3 +1,19 @@
+def get_puppet_instance_count(String reportFile) {
+  File f = new File(reportFile)
+  def jsonSlurper = new JsonSlurper()
+  def jsonText = f.getText()
+  def count = 0
+  json = slurper.parseText( jsonText )
+
+  json.each {
+    if (it.source =~ /^Stage\[main\]/Main/Ec2_instance\[.*$/ and  it.message =~ /.*ensure changed from absent to running.*/) {
+      count = count + 1
+    }
+  }
+
+  return count
+}
+
 node {
 
   puppet.credentials 'pe-access-token'
@@ -28,23 +44,21 @@ node {
           "FACTER_puppet_master_address=${puppetMasterAddress}",
           "FACTER_puppet_master_ip=${puppetMasterIP}",
           "FACTER_branch=${env.BRANCH_NAME}",
+          "FACTER_build=${env.BUILD_NUMBER}",
           "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
           "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
         ]) {
-          instance_count = sh(
-            script: 'puppet apply /rgbank-aws-dev.env.pp | grep Ec2_instance | grep "changed absent to running" | wc -l',
-            returnStdout: true
-          ).trim()
+          puppet apply /rgbank-aws-dev.env.pp --detailed-exitcodes --logdest ./puppetrun.json
         }
       }
     }
 
-    while ( puppet.query("inventory[certname] { facts.trusted.extensions.application = \"Rgbank[${env.BRANCH_NAME}]\" }").count != instance_count ) {
+    def instance_count = get_puppet_instance_count('./puppetrun.json')
+
+    while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
       sleep 5
     }
 
-    puppet.hiera scope: env.BRANCH_NAME, key: 'rgbank-build-version', value: version
-    puppet.hiera scope: env.BRANCH_NAME, key: 'rgbank-build-source-type', value: 'artifactory'
     puppet.job 'production', application: Rgbank[env.BRANCH_NAME]
   }
 
