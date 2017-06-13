@@ -48,7 +48,7 @@ node {
           "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
           "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
         ]) {
-          puppet apply /rgbank-aws-dev.env.pp --logdest ./puppetrun.json
+          sh "puppet apply /rgbank-aws-dev.env.pp --logdest ./puppetrun.json"
         }
       }
     }
@@ -81,7 +81,7 @@ node {
       }"""
 
       docker.image("rgbank-build-env:latest").inside {
-        sh "/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src ."
+        sh("/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src .")
       }
 
       archive "rgbank-build-${version}.tar.gz"
