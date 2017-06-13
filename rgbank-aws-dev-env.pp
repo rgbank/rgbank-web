@@ -1,7 +1,13 @@
 $epp_script = @("EPP"/)
 #/bin/bash
 echo "<%= \$master_ip %> <%= \$master_address %>" >> /etc/hosts
-curl -k https://puppet:8140/packages/current/install.bash | bash -s agent:certname=<%= \$certname %> extension_requests:pp_role=<%= \$role %> extension_requests:pp_application=<%= \$application%> extension_requests:pp_environment=<%= \$environment%> extension_requests:pp_apptier=<%= \$apptier%> extension_requests:pp_project=<%= \$build_id %>
+curl -k https://puppet:8140/packages/current/install.bash | bash -s \
+  extension_requests:pp_role=<%= \$role %> \
+  extension_requests:pp_datacenter=AWS \
+  extension_requests:pp_application=<%= \$application%> \
+  extension_requests:pp_environment=<%= \$environment%> \
+  extension_requests:pp_apptier=<%= \$apptier%> \
+  extension_requests:pp_project=<%= \$build_id %>
 /usr/local/bin/puppet agent -t
 | EPP
 
@@ -40,7 +46,6 @@ ec2_instance { "rgbank-development-${::branch}.aws.puppet.vm":
     'application'    => "Rgbank[${::branch}]",
     'environment'    => $::branch,
     'apptier'        => '[Rgbank::Db,Rgbank::Web]',
-    'certname'       => "rgbank-development-${::branch}.aws.puppet.vm",
     'build_id'       => $::build,
   }),
 }
