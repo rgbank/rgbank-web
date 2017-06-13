@@ -1,6 +1,8 @@
 $epp_script = @("EPP"/)
 #/bin/bash
-curl -k https://<%= \$master_address %>:8140/packages/current/install.bash | sudo bash -s extension_requests:pp_role=<%= \$pp_role %> extension_requests:pp_appenv=<%= \$pp_appenv %>
+echo "52.54.213.229 master.inf.puppet.vm puppet ip-10-0-0-148" >> /etc/hosts
+curl -k https://<%= \$master_address %>:8140/packages/current/install.bash | bash -s  extension_requests:pp_role=<%= \$role %> extension_requests:pp_application=<%= \$application%> extension_requests:pp_environment=<%= \$environment%> extension_requests:pp_apptier=<%= \$apptier%>
+/usr/local/bin/puppet agent -t
 | EPP
 
 if ($::destroy) {
@@ -16,90 +18,25 @@ Ec2_instance {
   instance_type     => 't2.small',
   key_name          => 'ccaum',
   availability_zone => 'us-east-1c',
-  subnet            => 'rgbank-subnet',
-  security_groups   => ['rgbank-vpn','rgbank-ssh'],
+  subnet            => 'ara-subnet',
+  security_groups   => ['default','ssh'],
   tags              => {
-    puppet_provisioned => 'true',
-    development_branch => $::branch,
+    #development_branch => $::branch,
+    department         => "Product Marketing",
+    project            => "ARA demo",
+    owner              => "Carl Caum",
   },
 }
 
-ec2_vpc { 'rgbank-development':
-  ensure => present,
-  region => 'us-east-1',
-  cidr_block => '10.0.0.0/24',
-  tags => { 'disposable' => 'true' },
-}
 
-ec2_vpc_internet_gateway { 'rgbank-igateway':
-  ensure => present,
-  region => 'us-east-1',
-  vpc    => 'rgbank-development',
-}
-
-ec2_vpc_subnet { 'rgbank-subnet':
-  ensure                  => present,
-  region                  => 'us-east-1',
-  cidr_block              => '10.0.0.0/24',
-  availability_zone       => 'us-east-1c',
-  map_public_ip_on_launch => 'true',
-  vpc                     => 'rgbank-development',
-  tags                    => {
-    tag_name => 'value',
-  },
-}
-
-ec2_securitygroup { 'rgbank-ssh':
-  ensure      => present,
-  region      => 'us-east-1',
-  vpc         => 'rgbank-development',
-  description => "SSH access",
-  ingress     => [{
-    protocol  => 'tcp',
-    port      => 22,
-    cidr      => '0.0.0.0/0',
-  }],
-}
-
-ec2_securitygroup { 'rgbank-vpn':
-  ensure      => present,
-  region      => 'us-east-1',
-  vpc         => 'rgbank-development',
-  description => 'OpenVPN access',
-  ingress     => [{
-    protocol  => 'udp',
-    port      => 1194,
-    cidr      => '0.0.0.0/0',
-  },{
-    protocol  => 'tcp',
-    port      => 443,
-    cidr      => '0.0.0.0/0',
-  }],
-  tags        => {
-    vpn => 'true',
-  },
-}
-
-ec2_instance { "rgbank-${::branch}-database":
-  user_data => inline_epp( $epp_script, {
-    'master_address' => $::puppet_master_address,
-    'pp_role'        => 'rgbank-database',
-    'pp_appenv'      => $::branch,
-  }),
-}
-
-ec2_instance { "rgbank-${::branch}-web":
-  user_data => inline_epp( $epp_script, {
-    'master_address' => $::puppet_master_address,
-    'pp_role'        => 'rgbank-web',
-    'pp_appenv'      => $::branch,
-  }),
-}
-
-ec2_instance { "rgbank-${::branch}-loadbalancer":
-  user_data => inline_epp( $epp_script, {
-    'master_address' => $::puppet_master_address,
-    'pp_role'        => 'rgbank-lb',
-    'pp_appenv'      => $::branch,
+ec2_instance { "rgbank-development-${::branch}.aws.puppet.vm":
+  instance_type   => 't2.small',
+  security_groups => ['http','ssh'],
+  user_data       => inline_epp( $epp_script, {
+    'master_address' => 'ip-10-0-0-148',
+    'role'           => 'loadbalancer',
+    'application'    => "Rgbank[${::branch}]",
+    'environment'    => $::branch,
+    'apptier'        => '[Rgbank::Db,Rgbank::Web]',
   }),
 }
