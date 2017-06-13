@@ -19,7 +19,7 @@ node {
   puppet.credentials 'pe-access-token'
   def version
   def puppetMasterAddress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl().toString()
-  def puppetMasterIP = "getent ahostsv4 | grep " + puppetMasterAddress + " | awk '{ print $1 }'".execute().text
+  def puppetMasterIP = "getent ahostsv4 | grep " + puppetMasterAddress + " | awk '{ print \$1 }'".execute().text
 
   stage('Prepare build environment'){
     checkout scm
