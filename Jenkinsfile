@@ -34,35 +34,36 @@ node {
     }
   }
 
-  stage('Build development environment') {
-    docker.image("rgbank-build-env:latest").inside('--user 0:0') {
-      withCredentials([
-        string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
-        string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
-      ]) {
-        withEnv([
-          "FACTER_puppet_master_address=${puppetMasterAddress}",
-          "FACTER_puppet_master_ip=${puppetMasterIP}",
-          "FACTER_branch=${env.BRANCH_NAME}",
-          "FACTER_build=${env.BUILD_NUMBER}",
-          "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
-          "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
+  if (env.BRANCH_NAME != "master") {
+    stage('Build development environment') {
+      docker.image("rgbank-build-env:latest").inside('--user 0:0') {
+        withCredentials([
+          string(credentialsId: 'aws-key-id', variable: 'AWS_KEY_ID'),
+          string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
         ]) {
-          sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ./puppetrun.json"
+          withEnv([
+            "FACTER_puppet_master_address=${puppetMasterAddress}",
+            "FACTER_puppet_master_ip=${puppetMasterIP}",
+            "FACTER_branch=${env.BRANCH_NAME}",
+            "FACTER_build=${env.BUILD_NUMBER}",
+            "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
+            "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
+          ]) {
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ./puppetrun.json"
+          }
         }
       }
+
+      instance_count = get_puppet_instance_count("puppetrun.json")
+
+      while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
+        sleep 5
+      }
+
+      puppet.job 'production', application: Rgbank[env.BRANCH_NAME]
     }
+  } else {
 
-    instance_count = get_puppet_instance_count("puppetrun.json")
-
-    while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
-      sleep 5
-    }
-
-    puppet.job 'production', application: Rgbank[env.BRANCH_NAME]
-  }
-
-  if(env.BRANCH_NAME == "master") {
     stage('Build and package') {
       artifactoryServer = Artifactory.server 'artifactory'
 
