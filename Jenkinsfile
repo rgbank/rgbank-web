@@ -1,6 +1,6 @@
 def get_puppet_instance_count(String reportFile) {
   File f = new File(reportFile)
-  def jsonSlurper = new JsonSlurper()
+  def jsonSlurper = new groovy.json.JsonSlurper()
   def jsonText = f.getText()
   def count = 0
   json = slurper.parseText( jsonText )
