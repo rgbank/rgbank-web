@@ -6,8 +6,8 @@ def get_puppet_instance_count(String reportFile) {
   count = 0
   json = jsonSlurper.parseText( jsonText )
 
-  json.each {
-    if (it.source =~ /.*Ec2_instance\[.*$/ && it.message =~ /.*ensure changed from absent to running.*/) {
+  for (entry in json) {
+    if (entry.source =~ /.*Ec2_instance\[.*$/ && entry.message =~ /.*ensure changed from absent to running.*/) {
       count = count + 1
     }
   }
