@@ -69,7 +69,7 @@ node {
 
       buildUploadSpec = """{
         "files": [ {
-          "pattern": 'rgbank-build-${version}.tar.gz',
+          "pattern": 'rgbank-build-1235.tar.gz',
           "target": "rgbank-web"
         } ]
       }"""
