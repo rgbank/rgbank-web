@@ -57,7 +57,7 @@ node {
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
       @NonCPS
-      def node_count {
+      def node_count() {
         puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }).count
       }
 
