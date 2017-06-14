@@ -55,6 +55,7 @@ node {
       }
 
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
+      println "INSTANCECOUNT: ${instance_count}"
 
       while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
         sleep 5
