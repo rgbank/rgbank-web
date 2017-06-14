@@ -69,7 +69,7 @@ node {
 
       buildUploadSpec = """{
         "files": [ {
-          "pattern": "rgbank-build-1234.tar.gz",
+          "pattern": 'rgbank-build-${version}.tar.gz',
           "target": "rgbank-web"
         } ]
       }"""
@@ -85,8 +85,8 @@ node {
         sh("/usr/bin/tar -czf rgbank-build-${version}.tar.gz -C src .")
       }
 
-      //archive "rgbank-build-${version}.tar.gz"
-      //archive "rgbank.sql"
+      archive "rgbank-build-${version}.tar.gz"
+      archive "rgbank.sql"
       artifactoryServer.upload spec: buildUploadSpec
       artifactoryServer.upload spec: devSQLUploadSpec
     }
@@ -120,3 +120,4 @@ node {
     }
   }
 }
+/* vim: set filetype=groovy */
