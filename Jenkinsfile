@@ -15,8 +15,8 @@ def get_puppet_instance_count(String reportFile) {
   return count
 }
 
-@NonCPS
 def node_count() {
+  println "DOING STUFF"
   results = puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }")
   println "SIZE: ${results.size()}"
   return results.size()
