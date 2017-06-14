@@ -24,7 +24,7 @@ node {
   puppet.credentials 'pe-access-token'
   version = ''
   puppetMasterAddress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
-  puppetMasterIP = "getent ahostsv4 ${puppetMasterAddress}".execute().split("\n")[0].split()[0]
+  puppetMasterIP = "getent ahostsv4 ${puppetMasterAddress}".execute().text.split("\n")[0].split()[0]
 
   stage('Prepare build environment'){
     checkout scm
