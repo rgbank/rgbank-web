@@ -1,5 +1,5 @@
 $epp_script = @("EPP"/)
-#/bin/bash
+#!/bin/bash
 
 echo "<%= \$master_ip %> <%= \$master_address %>" >> /etc/hosts
 
