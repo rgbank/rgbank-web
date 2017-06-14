@@ -1,8 +1,6 @@
 $epp_script = @("EPP"/)
 #!/bin/bash
 
-#<%= \$master_ip %>
-#<%= \$master_address %>
 echo "<%= \$master_ip %> <%= \$master_address %> puppet" >> /etc/hosts
 
 /bin/yum makeache
