@@ -1,4 +1,3 @@
-@NonCPS
 def get_puppet_instance_count(String reportFile) {
   File f = new File(reportFile)
   def jsonSlurper = new groovy.json.JsonSlurperClassic()
@@ -66,7 +65,7 @@ node {
 
       println "NODECOUNT: ${node_count()}"
       println "INSTANCECOUNT : ${instance_count()}"
-      while ( node_count().toInteger() != instance_count().toInteger() ) {
+      while ( node_count() != instance_count() ) {
         sleep 5
       }
       println "Running puppet job"
