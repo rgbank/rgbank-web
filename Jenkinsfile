@@ -63,7 +63,9 @@ node {
 
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
-      while ( node_count() != instance_count ) {
+      maxLoopCount = 180
+      while ( node_count() != instance_count  && maxLoopCount > 0) {
+        maxLoopCount = maxLoopCount - 1
         sleep 5
       }
 
