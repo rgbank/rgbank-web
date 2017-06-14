@@ -66,6 +66,8 @@ node {
         sleep 5
       }
 
+      print "APP: "
+      println "Rgbank[${env.BRANCH_NAME}]"
       puppet.job 'production', application: "Rgbank[${env.BRANCH_NAME}]"
     }
   } else {
