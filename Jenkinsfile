@@ -2,7 +2,7 @@ def get_puppet_instance_count(String reportFile) {
   File f = new File(reportFile)
   def jsonSlurper = new groovy.json.JsonSlurper()
   def jsonText = f.getText() + ']' //workaround a bug
-  def count = 0
+  count = 0
   json = jsonSlurper.parseText( jsonText )
 
   json.each {
@@ -56,7 +56,7 @@ node {
 
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
-      while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
+      while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != Integer(instance_count) ) {
         sleep 5
       }
       println "Running puppet job"
