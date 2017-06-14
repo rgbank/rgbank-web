@@ -49,12 +49,12 @@ node {
             "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
             "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
           ]) {
-            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ./puppetrun.json"
+            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ${WORKSPACE}/puppetrun.json"
           }
         }
       }
 
-      instance_count = get_puppet_instance_count("puppetrun.json")
+      instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
       while ( puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }").count != instance_count ) {
         sleep 5
