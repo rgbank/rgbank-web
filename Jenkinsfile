@@ -67,7 +67,7 @@ node {
       }
 
       print "APP: "
-      println "Rgbank[${env.BRANCH_NAME}]"
+      println "Rgbank[${env.BRANCH_NAME}]".getClass()
       puppet.job 'production', application: "Rgbank[${env.BRANCH_NAME}]"
     }
   } else {
