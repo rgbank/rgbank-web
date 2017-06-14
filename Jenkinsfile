@@ -63,6 +63,8 @@ node {
 
       def instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
+      println "NODECOUNT: ${node_count()}"
+      println "INSTANCECOUNT : ${nstance_count()}"
       while ( node_count().toInteger() != instance_count().toInteger() ) {
         sleep 5
       }
