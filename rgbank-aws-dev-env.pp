@@ -13,7 +13,9 @@ curl -k https://puppet:8140/packages/current/install.bash | bash -s \
   extension_requests:pp_apptier=<%= \$apptier%> \
   extension_requests:pp_project=<%= \$build_id %>
 
-/usr/local/bin/puppet agent -t
+#Make absolutely sure we can run the puppet agent from scratch
+/bin/ps aux | grep "puppet agent" | grep -v grep | awk '{ print $2 }' | xargs kill
+/opt/puppetlabs/bin/puppet agent -t
 | EPP
 
 if ($::destroy) {
