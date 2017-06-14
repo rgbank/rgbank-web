@@ -66,9 +66,10 @@ node {
         sleep 5
       }
 
-      print "APP: "
-      println "Rgbank[${env.BRANCH_NAME}]".getClass()
-      puppet.job 'production', application: "Rgbank[${env.BRANCH_NAME}]"
+      //Groovy 2.4 defaults to GString instead of String
+      //The Puppet plugin doesn't currently auto convert to String
+      app_name = "Rgbank[${env.BRANCH_NAME}]".toString()
+      puppet.job 'production', application: app_name
     }
   } else {
 
