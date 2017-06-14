@@ -1,6 +1,10 @@
 $epp_script = @("EPP"/)
 #/bin/bash
+
 echo "<%= \$master_ip %> <%= \$master_address %>" >> /etc/hosts
+
+/bin/yum makeache
+
 curl -k https://puppet:8140/packages/current/install.bash | bash -s \
   extension_requests:pp_role=<%= \$role %> \
   extension_requests:pp_datacenter=AWS \
@@ -8,6 +12,7 @@ curl -k https://puppet:8140/packages/current/install.bash | bash -s \
   extension_requests:pp_environment=<%= \$environment%> \
   extension_requests:pp_apptier=<%= \$apptier%> \
   extension_requests:pp_project=<%= \$build_id %>
+
 /usr/local/bin/puppet agent -t
 | EPP
 
