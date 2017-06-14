@@ -40,7 +40,7 @@ node {
   }
 
   if (env.BRANCH_NAME != "master") {
-    println "MASTER: ${puppetMasterAddress.getClass()}"
+    println "MASTER: ${puppetMasterIP.getClass()}"
     stage('Build development environment') {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
         withCredentials([
