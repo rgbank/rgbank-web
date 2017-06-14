@@ -11,8 +11,6 @@ def get_puppet_instance_count(String reportFile) {
     }
   }
 
-  
-  println "IN GET INSTANCE COUNT: ${ncount}"
   return ncount
 }
 
@@ -64,13 +62,13 @@ node {
         }
       }
 
-      def instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
+      println  get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
       println "NODECOUNT: ${node_count()}"
-      println "INSTANCECOUNT : ${instance_count()}"
-      while ( node_count() != instance_count() ) {
-        sleep 5
-      }
+      //println "INSTANCECOUNT : ${instance_count()}"
+      //while ( node_count() != instance_count() ) {
+      //  sleep 5
+      //}
       println "Running puppet job"
 
       puppet.job 'production', application: Rgbank[env.BRANCH_NAME]
