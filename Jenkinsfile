@@ -18,6 +18,7 @@ def get_puppet_instance_count(String reportFile) {
 @NonCPS
 def node_count() {
   results = puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }")
+  println "SIZE: ${results.size()}"
   return results.size()
 }
 
@@ -64,7 +65,7 @@ node {
       def instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
       println "NODECOUNT: ${node_count()}"
-      println "INSTANCECOUNT : ${nstance_count()}"
+      println "INSTANCECOUNT : ${instance_count()}"
       while ( node_count().toInteger() != instance_count().toInteger() ) {
         sleep 5
       }
