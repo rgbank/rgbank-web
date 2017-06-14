@@ -18,6 +18,8 @@ curl -k https://puppet:8140/packages/current/install.bash | bash -s \
 /usr/local/bin/puppet agent -t
 | EPP
 
+fail $::puppet_master_ip
+
 if ($::destroy) {
   $ensure = absent
 } else {
