@@ -40,7 +40,7 @@ node {
   }
 
   if (env.BRANCH_NAME != "master") {
-    println "MASTER: ${puppetMasterAddress}"
+    println "MASTER: ${puppetMasterAddress.getClass()}"
     stage('Build development environment') {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
         withCredentials([
@@ -48,7 +48,7 @@ node {
           string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
         ]) {
           withEnv([
-            "FACTER_puppet_master_address=${puppetMasterAddress}",
+            "FACTER_puppet_master_address=${puppetMasterAddress.toString()}",
             "FACTER_puppet_master_ip=${puppetMasterIP}",
             "FACTER_branch=${env.BRANCH_NAME}",
             "FACTER_build=${env.BUILD_NUMBER}",
