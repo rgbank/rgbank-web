@@ -15,9 +15,9 @@ def get_puppet_instance_count(String reportFile) {
 }
 
 def node_count() {
-  #Get a list of all nodes provisioned by this build 
-  # that have had the Service[pxp-agent] ensured to be running.
-  # If all of that is true then the node is ready to be deployed to.
+  //Get a list of all nodes provisioned by this build 
+  // that have had the Service[pxp-agent] ensured to be running.
+  // If all of that is true then the node is ready to be deployed to.
   results = puppet.query("events { resource_type  = \"Service\" and resource_title = \"pxp-agent\" and property = \"ensure\" and new_value = \"running\" and inventory { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" } }")
   return results.size()
 }
