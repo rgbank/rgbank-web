@@ -62,14 +62,11 @@ node {
 
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
-      println "NODECOUNT: ${node_count()}"
-      println "INSTANCECOUNT : ${instance_count}"
-      //while ( node_count() != instance_count() ) {
-      //  sleep 5
-      //}
-      println "Running puppet job"
+      while ( node_count() != instance_count ) {
+        sleep 5
+      }
 
-      puppet.job 'production', application: Rgbank[env.BRANCH_NAME]
+      puppet.job 'production', application: "Rgbank[${env.BRANCH_NAME}]"
     }
   } else {
 
