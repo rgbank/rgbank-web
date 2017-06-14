@@ -24,6 +24,7 @@ node {
   stage('Prepare build environment'){
     checkout scm
     version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(6)
+    println "VERSION: ${version.toString()}"
     docker.build("rgbank-build-env:latest")
   }
 
@@ -69,7 +70,7 @@ node {
 
       buildUploadSpec = """{
         "files": [ {
-          "pattern": "rgbank-build-1235.tar.gz",
+          "pattern": "rgbank-build-${version}.tar.gz",
           "target": "rgbank-web"
         } ]
       }"""
