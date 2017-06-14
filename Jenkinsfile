@@ -2,16 +2,16 @@ def get_puppet_instance_count(String reportFile) {
   File f = new File(reportFile)
   def jsonSlurper = new groovy.json.JsonSlurperClassic()
   def jsonText = f.getText() + ']' //workaround a bug
-  count = 0
+  ncount = 0
   json = jsonSlurper.parseText( jsonText )
 
   for (entry in json) {
     if (entry.source =~ /.*Ec2_instance\[.*$/ && entry.message =~ /.*ensure changed from absent to running.*/) {
-      count = count + 1
+      ncount = ncount + 1
     }
   }
 
-  return count
+  return ncount
 }
 
 def node_count() {
