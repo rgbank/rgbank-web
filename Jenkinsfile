@@ -23,7 +23,7 @@ node {
 
   puppet.credentials 'pe-access-token'
   version = ''
-  puppetMasterAddress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl()
+  puppetMasterAddress = org.jenkinsci.plugins.puppetenterprise.models.PuppetEnterpriseConfig.getPuppetMasterUrl().toString()
   puppetMasterIP = "getent ahostsv4 | grep ${puppetMasterAddress} | awk '{ print \$1 }'".execute().text
 
   stage('Prepare build environment'){
@@ -40,6 +40,7 @@ node {
   }
 
   if (env.BRANCH_NAME != "master") {
+    println "MASTER: ${puppetMasterAddress}"
     stage('Build development environment') {
       docker.image("rgbank-build-env:latest").inside('--user 0:0') {
         withCredentials([
@@ -54,22 +55,22 @@ node {
             "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
             "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
           ]) {
-            sh "rm -f ${WORKSPACE}/puppetrun.json"
-            sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ${WORKSPACE}/puppetrun.json"
+            //sh "rm -f ${WORKSPACE}/puppetrun.json"
+            //sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ${WORKSPACE}/puppetrun.json"
           }
         }
       }
 
-      instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
+      //instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
-      while ( node_count() != instance_count ) {
-        sleep 5
-      }
+      //while ( node_count() != instance_count ) {
+      //  sleep 5
+      //}
 
       //Groovy 2.4 defaults to GString instead of String
       //The Puppet plugin doesn't currently auto convert to String
       app_name = "Rgbank[${env.BRANCH_NAME}]".toString()
-      puppet.job 'production', application: app_name
+      //puppet.job 'production', application: app_name
     }
   } else {
 
