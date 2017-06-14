@@ -45,11 +45,11 @@ Ec2_instance {
 
 ec2_instance { "rgbank-development-${::branch}.aws.puppet.vm":
   instance_type   => 't2.small',
-  security_groups => ['http','ssh'],
+  security_groups => ['rgbank-app','mysql','ssh'],
   user_data       => inline_epp( $epp_script, {
     'master_address' => $::puppet_master_address,
     'master_ip'      => $::puppet_master_ip,
-    'role'           => 'loadbalancer',
+    'role'           => 'rgbank-development',
     'application'    => "Rgbank[${::branch}]",
     'environment'    => $::branch,
     'apptier'        => '[Rgbank::Db,Rgbank::Web]',
