@@ -3,7 +3,7 @@ def get_puppet_instance_count(String reportFile) {
   def jsonSlurper = new groovy.json.JsonSlurper()
   def jsonText = f.getText()
   def count = 0
-  json = slurper.parseText( jsonText )
+  json = jsonSlurper.parseText( jsonText )
 
   json.each {
     if (it.source =~ /.*Ec2_instance\[.*$/ && it.message =~ /.*ensure changed from absent to running.*/) {
