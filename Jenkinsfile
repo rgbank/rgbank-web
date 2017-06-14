@@ -15,9 +15,7 @@ def get_puppet_instance_count(String reportFile) {
 }
 
 def node_count() {
-  println "DOING STUFF"
   results = puppet.query("inventory[certname] { facts.trusted.extensions.pp_application = \"Rgbank[${env.BRANCH_NAME}]\" and facts.trusted.extensions.pp_project = \"${env.BUILD_NUMBER}\" }")
-  println "SIZE: ${results.size()}"
   return results.size()
 }
 
@@ -62,7 +60,8 @@ node {
         }
       }
 
-      println  get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
+      instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
+      println "WTF: ${instance_count}"
 
       println "NODECOUNT: ${node_count()}"
       //println "INSTANCECOUNT : ${instance_count()}"
