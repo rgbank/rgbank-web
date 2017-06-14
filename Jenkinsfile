@@ -1,6 +1,7 @@
+@NonCPS
 def get_puppet_instance_count(String reportFile) {
   File f = new File(reportFile)
-  def jsonSlurper = new groovy.json.JsonSlurper()
+  def jsonSlurper = new groovy.json.JsonSlurperClassic()
   def jsonText = f.getText() + ']' //workaround a bug
   count = 0
   json = jsonSlurper.parseText( jsonText )
@@ -62,7 +63,7 @@ node {
       instance_count = get_puppet_instance_count("${WORKSPACE}/puppetrun.json")
 
 
-      while ( node_count != Integer(instance_count) ) {
+      while ( node_count != instance_count ) {
         sleep 5
       }
       println "Running puppet job"
