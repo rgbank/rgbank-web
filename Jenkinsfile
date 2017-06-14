@@ -6,11 +6,13 @@ def get_puppet_instance_count(String reportFile) {
   json = jsonSlurper.parseText( jsonText )
 
   for (entry in json) {
-    if (entry.source =~ /.*Ec2_instance\[.*$/ && entry.message =~ /.*ensure changed from absent to running.*/) {
+    if (entry.source =~ /.*Ec2_instance\[.*$/ && entry.message =~ /.*changed absent to running.*/) {
       ncount = ncount + 1
     }
   }
 
+  
+  println "IN GET INSTANCE COUNT: ${ncount}"
   return ncount
 }
 
@@ -56,6 +58,7 @@ node {
             "AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
             "AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY}"
           ]) {
+            sh "rm -f ${WORKSPACE}/puppetrun.json"
             sh "/opt/puppetlabs/bin/puppet apply /rgbank-aws-dev-env.pp --logdest ${WORKSPACE}/puppetrun.json"
           }
         }
