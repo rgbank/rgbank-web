@@ -1,0 +1,18 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppet/nginx'
+mod 'puppetlabs/mysql'
+mod 'puppetlabs/vcsrepo'
+mod 'puppetlabs/git'
+mod 'puppetlabs/stdlib'
+mod 'puppetlabs/concat'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/dummy_service'
+mod 'puppetlabs/inifile'
+mod 'hunner/wordpress'
+mod 'camptocamp/archive'
+mod 'evenup-artifactory'
+mod 'puppet-php'
+
+mod 'rgbank',
+  :git => 'http://gitlab.inf.puppet.vm/rgbank/puppetlabs-rgbank.git'
