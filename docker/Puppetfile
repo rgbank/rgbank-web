@@ -15,4 +15,4 @@ mod 'evenup-artifactory'
 mod 'puppet-php'
 
 mod 'rgbank',
-  :git => 'http://gitlab.inf.puppet.vm/rgbank/puppetlabs-rgbank.git'
+  :git => 'http://github.com/rgbank/puppetlabs-rgbank.git'
