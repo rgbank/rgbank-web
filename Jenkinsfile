@@ -79,6 +79,7 @@ node {
       puppet.job 'production', application: app_name
     }
   } else {
+    //We're in a production deployment
 
     stage('Build and package') {
       artifactoryServer = Artifactory.server 'artifactory'
@@ -130,6 +131,17 @@ node {
       puppet.job 'production', noop: true, application: 'Rgbank[production]'
     }
   
+    stage('Production canary deployment') {
+      input "Approve for production canary deployment?"
+      query = """inventory {
+                  facts.trusted.extensions.pp_application = "rgbank" and
+                  facts.trusted.extensions.pp_environment = "production" and
+                  facts.trusted.extensions.pp_apptier = "web" and
+                  nodes { deactivated is null } limit 2 }"""
+
+      puppet.job 'production', query: query
+    }
+
     stage('Deploy to production') {
       input "Ready to deploy to production?"
       puppet.job 'production', concurrency: 40, application: 'Rgbank[production]'
