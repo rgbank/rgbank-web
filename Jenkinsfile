@@ -32,6 +32,7 @@ node {
   stage('Prepare build environment'){
     checkout scm
     version = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(6)
+    puppet.hiera scope: env.BRANCH_NAME, key: 'rgbank-build-version', value: version
     docker.build("rgbank-build-env:latest")
   }
 
